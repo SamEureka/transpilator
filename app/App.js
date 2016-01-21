@@ -21,7 +21,7 @@ var styles = {
     color: '#666',
     height: '2.6rem',
     width: '100vw',
-    fontFamily: 'Lato',
+    fontFamily: 'Varela',
     fontSize: '2rem',
     paddingLeft: 10
   },
