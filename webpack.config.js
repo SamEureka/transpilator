@@ -1,3 +1,5 @@
+var webpack = require('webpack');
+
 module.exports = {
   context: __dirname + '/app',
   entry: {
@@ -21,4 +23,14 @@ module.exports = {
       },
     ],
   },
+  externals: {
+    'jade': 'jade',
+  },
+  plugins: [
+    // new webpack.DefinePlugin({
+    //   // Force HTMLtoJSX to use the in-browser `document` object rather than
+    //   // require the Node-only "jsdom" package.
+    //   IN_BROWSER: true,
+    // })
+  ],
 };

@@ -1,7 +1,7 @@
 // Import the modules
 var React = require('react');
 var ReactDOM = require('react-dom');
-// var jade = require('jade');
+var jade = require('jade');
 
 var OtherComponent = require('./components/OtherComponent');
 
@@ -24,7 +24,7 @@ var styles = {
     color: '#666',
     height: '2.6rem',
     width: '100vw',
-    fontFamily: 'Varela',
+    fontFamily: 'Brandon-Grotesque',
     fontSize: '2rem',
     paddingLeft: 10
   },
@@ -48,13 +48,14 @@ var styles = {
   pre: {
     backgroundColor: 'rgba(70,130,180,0.2)',
     width: '50%',
+    height: '100vh',
     fontFamily: 'Source Code Pro',
     fontSize: '1.1rem',
     marginTop: '2.5rem',
     padding: 10,
     color: '#222',
     overflow: 'auto',
-    whiteSpace: 'pre-wrap'
+    //whiteSpace: 'pre-wrap'
   },
   cont: {
     height: '100vh',
@@ -86,16 +87,16 @@ class App extends React.Component {
   update(e){
     let code = e.target.value;
     try {
-      // this.setState({
-      //   out: jade.render(code, {
-      //     pretty: ' '
-      //   }),
-      //   err: ''
-      // })
+      this.setState({
+        out: jade.render(code, {
+          pretty: ' '
+        }),
+        err: ''
+      })
     }
     catch(err) {
       this.setState({err: " Syntax error: " + err.message})
-      }
+    }
   }
   render() {
     return (
@@ -104,7 +105,6 @@ class App extends React.Component {
         <i style={styles.red} className="fa fa-code"></i>
         <i style={styles.blue} className="fa fa-code"></i>
         <span>transpilator</span>
-        <OtherComponent />
 
       <select style={styles.pick} name="select">
         <option value="value1">Jade</option>
