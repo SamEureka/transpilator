@@ -1,7 +1,9 @@
 // Import the modules
 var React = require('react');
 var ReactDOM = require('react-dom');
-var jade = require('jade');
+// var jade = require('jade');
+
+var OtherComponent = require('./components/OtherComponent');
 
 // All the styles in one object
 var styles = {
@@ -12,7 +14,8 @@ var styles = {
     marginTop: '2.5rem',
     padding: 10,
     backgroundColor: 'rgba(240,240,240,0.5)',
-    color: '#222'
+    color: '#222',
+    resize: 'none',
   },
   header: {
     backgroundColor: 'rgba(70,130,180,0.1)',
@@ -41,7 +44,7 @@ var styles = {
     WebkitTransition: 'width 1s ease',
     transition: 'width 1s ease',
     transitionDelay: '1s'
-    },
+  },
   pre: {
     backgroundColor: 'rgba(70,130,180,0.2)',
     width: '50%',
@@ -52,13 +55,16 @@ var styles = {
     color: '#222',
     overflow: 'auto',
     whiteSpace: 'pre-wrap'
-    },
+  },
   cont: {
-    height: '100vh', 
+    height: '100vh',
     display: 'flex'
   },
   blue: {
     color: 'steelblue'
+  },
+  red: {
+    color: 'maroon'
   },
   pick: {
     position: 'absolute',
@@ -71,7 +77,7 @@ class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      in: 'Type yer Jade here...',
+      in: 'Jade here... HTML over there -->',
       out: '',
       err: ''
     }
@@ -80,12 +86,12 @@ class App extends React.Component {
   update(e){
     let code = e.target.value;
     try {
-      this.setState({
-        out: jade.render(code, {
-          pretty: ' '
-        }),
-        err: ''
-      })
+      // this.setState({
+      //   out: jade.render(code, {
+      //     pretty: ' '
+      //   }),
+      //   err: ''
+      // })
     }
     catch(err) {
       this.setState({err: " Syntax error: " + err.message})
@@ -94,15 +100,19 @@ class App extends React.Component {
   render() {
     return (
     <div>
-      <header style={styles.header}> 
-        <i style={styles.blue} className="fa fa-code"></i> transpilator <i style={styles.blue} className="fa fa-code"></i>
+      <header style={styles.header}>
+        <i style={styles.red} className="fa fa-code"></i>
+        <i style={styles.blue} className="fa fa-code"></i>
+        <span>transpilator</span>
+        <OtherComponent />
+
       <select style={styles.pick} name="select">
-        <option value="value1">Jade</option> 
+        <option value="value1">Jade</option>
         <option value="value2">CoffeeScript</option>
         <option value="value3">ES2015 (Babel)</option>
         <option value="value4">React/JSX (Babel)</option>
-  
-</select></header>  
+
+</select></header>
       <div className="container" style={styles.cont}>
           <textarea id="boom" style={styles.text} placeholder={this.state.in}
           onChange={this.update}></textarea>
@@ -124,7 +134,7 @@ document.getElementById('boom').addEventListener('keydown', function(e){
     var target = e.target;
     var value = target.value;
     target.value = value.substring(0, start)
-          + "  " 
+          + "  "
           + value.substring(end);
     this.selectionStart = this.selectionEnd = start + 2;
     e.preventDefault();

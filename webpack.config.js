@@ -1,19 +1,24 @@
-
 module.exports = {
-	entry: "./app/App.js",
-	output: {
-		filename: "dist/index.js"
-	},
-	module: {
-		loaders: [
-			{
-				test: /\.jsx?$/,
-				exclude: /(node_modules|bower_components)/,
-				loader: 'babel',
-				query: {
-					presets: ['react', 'es2015']
-				}
-			}	
-		]
-	}
+  context: __dirname + '/app',
+  entry: {
+    html: './index.html',
+    javascript: './App.js',
+  },
+  output: {
+    filename: 'index.js',
+    path: __dirname + '/dist',
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.html$/,
+        loader: 'file?name=[name].[ext]',
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loaders: ['react-hot', 'babel?presets[]=react,presets[]=es2015'],
+      },
+    ],
+  },
 };
