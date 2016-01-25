@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "/dist/";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -77,7 +77,7 @@
 	    color: '#666',
 	    height: '2.6rem',
 	    width: '100vw',
-	    fontFamily: 'Lato',
+	    fontFamily: 'Varela',
 	    fontSize: '2rem',
 	    paddingLeft: 10
 	  },
@@ -115,6 +115,9 @@
 	  },
 	  blue: {
 	    color: 'steelblue'
+	  },
+	  red: {
+	    color: 'maroon'
 	  },
 	  pick: {
 	    position: 'absolute',
@@ -164,9 +167,13 @@
 	        React.createElement(
 	          'header',
 	          { style: styles.header },
+	          React.createElement('i', { style: styles.red, className: 'fa fa-code' }),
 	          React.createElement('i', { style: styles.blue, className: 'fa fa-code' }),
-	          ' transpilator ',
-	          React.createElement('i', { style: styles.blue, className: 'fa fa-code' }),
+	          React.createElement(
+	            'span',
+	            null,
+	            'transpilator'
+	          ),
 	          React.createElement(
 	            'select',
 	            { style: styles.pick, name: 'select' },
