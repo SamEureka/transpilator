@@ -66,25 +66,50 @@
 	// All the styles in one object
 	var styles = {
 	  text: {
-	    width: '50%',
+	    position: 'fixed',
+	    width: '48.01vw',
+	    height: '100vh',
 	    fontFamily: 'Source Code Pro',
 	    fontSize: '1.1rem',
-	    marginTop: '2.5rem',
-	    padding: 10,
-	    backgroundColor: 'rgba(240,240,240,0.5)',
+	    top: '3.5rem',
+	    left: 0,
+	    paddingTop: 10,
+	    paddingRight: '1vw',
+	    paddingLeft: '1vw',
+	    backgroundColor: 'rgba(70,130,180,0.1)',
 	    color: '#222',
-	    resize: 'none'
+	    resize: 'none',
+	    overflow: 'auto',
+	    border: 0
+	  },
+	  pre: {
+	    position: 'fixed',
+	    backgroundColor: 'rgba(70,230,180,0.2)',
+	    width: '48.01vw',
+	    height: '100vh',
+	    fontFamily: 'Source Code Pro',
+	    fontSize: '1.1rem',
+	    top: '2.4rem',
+	    right: 0,
+	    paddingTop: 10,
+	    paddingLeft: '1vw',
+	    paddingRight: '1vw',
+	    color: '#222',
+	    whiteSpace: 'pre-wrap',
+	    wordWrap: 'break-word',
+	    overflow: 'auto'
 	  },
 	  header: {
-	    backgroundColor: 'rgba(70,130,180,0.1)',
+	    backgroundColor: 'rgba(240,240,240,0.5)',
 	    position: 'fixed',
 	    top: 0,
 	    color: '#666',
-	    height: '2.6rem',
+	    height: '3.3rem',
 	    width: '100vw',
 	    fontFamily: 'Brandon-Grotesque',
-	    fontSize: '2rem',
-	    paddingLeft: 10
+	    fontSize: '2.1rem',
+	    paddingLeft: '0.5rem',
+	    paddingTop: '0.2rem'
 	  },
 	  footer: {
 	    position: 'fixed',
@@ -103,18 +128,6 @@
 	    transition: 'width 1s ease',
 	    transitionDelay: '1s'
 	  },
-	  pre: {
-	    backgroundColor: 'rgba(70,130,180,0.2)',
-	    width: '50%',
-	    height: '100vh',
-	    fontFamily: 'Source Code Pro',
-	    fontSize: '1.1rem',
-	    marginTop: '2.5rem',
-	    padding: 10,
-	    color: '#222',
-	    overflow: 'auto'
-	  },
-	  //whiteSpace: 'pre-wrap'
 	  cont: {
 	    height: '100vh',
 	    display: 'flex'
@@ -123,12 +136,15 @@
 	    color: 'steelblue'
 	  },
 	  red: {
-	    color: 'maroon'
+	    color: 'rgba(225, 55, 55,0.5)'
+	  },
+	  green: {
+	    color: 'rgba(70,230,180,0.2)'
 	  },
 	  pick: {
-	    position: 'absolute',
-	    right: 20,
-	    top: 11
+	    position: 'fixed',
+	    right: '1rem',
+	    top: '1rem'
 	  }
 	};
 
@@ -178,7 +194,7 @@
 	          React.createElement(
 	            'span',
 	            null,
-	            'transpilator'
+	            ' transpilator'
 	          ),
 	          React.createElement(
 	            'select',
