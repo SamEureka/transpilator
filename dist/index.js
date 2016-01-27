@@ -117,16 +117,14 @@
 	    bottom: 2,
 	    height: '1.5rem',
 	    overflow: 'auto',
-	    backgroundColor: 'rgba(193, 66, 66, 0.3)',
+	    backgroundColor: 'rgb(244, 164, 165)',
 	    color: 'red',
 	    fontSize: '1.1em',
 	    borderRadius: '3px',
 	    borderTop: '1px dotted red',
 	    borderRight: '1px dotted red',
 	    borderBottom: '1px dotted red',
-	    WebkitTransition: 'width 1s ease',
-	    transition: 'width 1s ease',
-	    transitionDelay: '1s'
+	    zIndex: 1
 	  },
 	  cont: {
 	    height: '100vh',

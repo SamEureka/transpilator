@@ -22,7 +22,7 @@ var styles = {
     color: '#222',
     resize: 'none',
     overflow: 'auto',
-    border: 0
+    border: 0,
   },
 pre: {
     position: 'fixed',
@@ -51,28 +51,26 @@ pre: {
     fontFamily: 'Brandon-Grotesque',
     fontSize: '2.1rem',
     paddingLeft: '0.5rem',
-    paddingTop: '0.2rem'
+    paddingTop: '0.2rem',
   },
   footer: {
     position: 'fixed',
     left: 0,
     bottom: 2,
-    height: '1.5rem',
+    height: 'auto',
     overflow: 'auto',
-    backgroundColor: 'rgba(193, 66, 66, 0.3)',
+    backgroundColor: 'rgb(244, 164, 165)',
     color: 'red',
     fontSize: '1.1em',
     borderRadius: '3px',
     borderTop: '1px dotted red',
     borderRight: '1px dotted red',
     borderBottom: '1px dotted red',
-    WebkitTransition: 'width 1s ease',
-    transition: 'width 1s ease',
-    transitionDelay: '1s'
+    zIndex: 1,
     },
   cont: {
     height: '100vh',
-    display: 'flex'
+    display: 'flex',
   },
   blue: {
     color: 'steelblue'
@@ -86,7 +84,7 @@ pre: {
   pick: {
     position: 'fixed',
     right: '1rem',
-    top: '1rem'
+    top: '1rem',
   }
 };
 
@@ -96,7 +94,7 @@ class App extends React.Component {
     this.state = {
       in: 'Jade here... HTML over there -->',
       out: '',
-      err: ''
+      err: '',
     }
     this.update = this.update.bind(this);
   }
