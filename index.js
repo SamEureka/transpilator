@@ -104,18 +104,18 @@
 	    position: 'fixed',
 	    top: 0,
 	    color: '#666',
-	    height: '3.3rem',
+	    height: '3rem',
 	    width: '100vw',
-	    fontFamily: 'Brandon-Grotesque',
-	    fontSize: '2.1rem',
+	    fontFamily: 'Varela',
+	    fontSize: '2rem',
 	    paddingLeft: '0.5rem',
-	    paddingTop: '0.2rem'
+	    paddingTop: '0.5rem'
 	  },
-	  footer: {
+	  error: {
 	    position: 'fixed',
 	    left: 0,
 	    bottom: 2,
-	    height: '1.5rem',
+	    height: 'auto',
 	    overflow: 'auto',
 	    backgroundColor: 'rgb(244, 164, 165)',
 	    color: 'red',
@@ -137,12 +137,25 @@
 	    color: 'rgba(225, 55, 55,0.5)'
 	  },
 	  green: {
-	    color: 'rgba(70,230,180,0.2)'
+	    color: 'rgba(50,250,55,0.2)'
 	  },
 	  pick: {
 	    position: 'fixed',
 	    right: '1rem',
-	    top: '1rem'
+	    top: '0.7rem',
+	    fontFamily: 'Lato',
+	    fontSize: '1.2rem',
+	    padding: '0.2rem',
+	    backgroundColor: 'rgba(240,240,240,0.8)'
+	  },
+	  footer: {
+	    position: 'fixed',
+	    bottom: '0.8rem',
+	    right: '0.8rem',
+	    textDecoration: 'none',
+	    color: 'rgba(55,55,55,0.6)',
+	    fontFamily: 'Lato',
+	    fontSize: '0.8rem'
 	  }
 	};
 
@@ -192,31 +205,14 @@
 	          React.createElement(
 	            'span',
 	            null,
-	            ' transpilator'
+	            ' ',
+	            'transpilator'
 	          ),
 	          React.createElement(
-	            'select',
-	            { style: styles.pick, name: 'select' },
-	            React.createElement(
-	              'option',
-	              { value: 'value1' },
-	              'Jade'
-	            ),
-	            React.createElement(
-	              'option',
-	              { value: 'value2' },
-	              'CoffeeScript'
-	            ),
-	            React.createElement(
-	              'option',
-	              { value: 'value3' },
-	              'ES2015 (Babel)'
-	            ),
-	            React.createElement(
-	              'option',
-	              { value: 'value4' },
-	              'React/JSX (Babel)'
-	            )
+	            'div',
+	            { style: styles.pick },
+	            ' Select ',
+	            React.createElement('i', { className: 'fa fa-caret-down' })
 	          )
 	        ),
 	        React.createElement(
@@ -230,9 +226,40 @@
 	            this.state.out
 	          ),
 	          React.createElement(
-	            'footer',
-	            { style: styles.footer },
+	            'div',
+	            { style: styles.error },
 	            this.state.err
+	          ),
+	          React.createElement(
+	            'div',
+	            { style: styles.footer },
+	            'Made with ',
+	            React.createElement('a', { href: 'http://en.wikipedia.org/wiki/Love', className: 'fa fa-heart-o fa-lg' }),
+	            ' by ',
+	            ' ',
+	            React.createElement(
+	              'a',
+	              { href: 'http://sam.dennon.me' },
+	              'Sam Dennon'
+	            ),
+	            ' & ',
+	            React.createElement(
+	              'a',
+	              { href: 'http://mattborn.com/' },
+	              'Matt Born'
+	            ),
+	            ' - ',
+	            ' ',
+	            React.createElement('a', { href: 'http://creativecommons.org/licenses/by/4.0/', className: 'fa fa-creative-commons fa-lg' }),
+	            ' - Hosted by ',
+	            '  ',
+	            React.createElement(
+	              'a',
+	              { className: 'fa fa-github-alt fa-lg', href: 'http://www.github.com' },
+	              ' ',
+	              '  ',
+	              'Github'
+	            )
 	          )
 	        )
 	      );
