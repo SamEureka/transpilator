@@ -48,7 +48,7 @@ pre: {
     color: '#666',
     height: '3rem',
     width: '100vw',
-    fontFamily: 'Varela',
+    fontFamily: 'Brandon+Grotesque',
     fontSize: '2rem',
     paddingLeft: '0.5rem',
     paddingTop: '0.5rem'
@@ -129,10 +129,10 @@ class App extends React.Component {
     return (
     <div>
       <header style={styles.header}>
-        <i style={styles.red} className="fa fa-code"></i>
+        <i style={styles.red} className="fa fa-code "></i>
         <i style={styles.blue} className="fa fa-code"></i>
-        <span>{' '}transpilator</span>
-        <div style={styles.pick}> Select <i className='fa fa-caret-down'></i></div>
+        <span>TRANSPILATOR</span>
+        <div style={styles.pick}> Jade <i className='fa fa-caret-down'></i></div>
       </header>
       <div className="container" style={styles.cont}>
         <textarea id="boom" style={styles.text} placeholder={this.state.in}
@@ -143,7 +143,7 @@ class App extends React.Component {
             Made with <a href="http://en.wikipedia.org/wiki/Love" className='fa fa-heart-o fa-lg'></a> by {' '}
             <a href="http://sam.dennon.me">Sam Dennon</a> & <a href="http://mattborn.com/">Matt Born</a> - {' '}
             <a href="http://creativecommons.org/licenses/by/4.0/" className='fa fa-creative-commons fa-lg'></a> - Hosted by {'  '}
-            <a className="fa fa-github-alt fa-lg" href="http://www.github.com"> {'  '}Github</a> 
+            <a className="fa fa-github-alt fa-lg" href="http://www.github.com"> {'  '}</a> Github
         </div>
       </div>
     </div>

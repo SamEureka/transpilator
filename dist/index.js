@@ -106,7 +106,7 @@
 	    color: '#666',
 	    height: '3rem',
 	    width: '100vw',
-	    fontFamily: 'Varela',
+	    fontFamily: 'Brandon+Grotesque',
 	    fontSize: '2rem',
 	    paddingLeft: '0.5rem',
 	    paddingTop: '0.5rem'
@@ -200,18 +200,17 @@
 	        React.createElement(
 	          'header',
 	          { style: styles.header },
-	          React.createElement('i', { style: styles.red, className: 'fa fa-code' }),
+	          React.createElement('i', { style: styles.red, className: 'fa fa-code ' }),
 	          React.createElement('i', { style: styles.blue, className: 'fa fa-code' }),
 	          React.createElement(
 	            'span',
 	            null,
-	            ' ',
-	            'transpilator'
+	            'TRANSPILATOR'
 	          ),
 	          React.createElement(
 	            'div',
 	            { style: styles.pick },
-	            ' Select ',
+	            ' Jade ',
 	            React.createElement('i', { className: 'fa fa-caret-down' })
 	          )
 	        ),
@@ -257,9 +256,9 @@
 	              'a',
 	              { className: 'fa fa-github-alt fa-lg', href: 'http://www.github.com' },
 	              ' ',
-	              '  ',
-	              'Github'
-	            )
+	              '  '
+	            ),
+	            ' Github'
 	          )
 	        )
 	      );
