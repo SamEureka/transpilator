@@ -5,6 +5,7 @@ var styles = require('./components/Styles');
 var Footer = require('./components/Footer');
 var Header = require('./components/Header');
 var tabInsert = require('./components/Helpers');
+//var CoffeeScript = require('coffee-script');
 //var jade = require('jade');
 
 class App extends React.Component {
@@ -20,16 +21,27 @@ class App extends React.Component {
   update(e){
     let code = e.target.value;
     try {
-      this.setState({
-        out: jade.render(code, {
-          pretty: ' '
-        }),
-        err: ''
+      this.setState({ // ,
+        // out: jade.render(code, {
+        //   pretty: ' '
+        // }),
+        // out: CoffeeScript.compile(code, {bare:true}),
+        out: babel.transform(code, {
+          stage: 0,
+          loose: 'all'
+        }).code,
+        err: '',
       })
     }
     catch(err) {
       this.setState({err: " Syntax error: " + err.message})
     }
+  }
+  componentWillMount () {
+    window.addEventListener('keydown', tabInsert, false);
+  }
+  componentWillUnmount () {
+    window.removeEventListener('keydown', tabInsert, false);
   }
   render() {
     return (
@@ -50,5 +62,5 @@ class App extends React.Component {
     )
   }
 }
-window.addEventListener('keydown', tabInsert,false);
+
 ReactDOM.render(<App />,document.getElementById('app'));
