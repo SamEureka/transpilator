@@ -77,7 +77,8 @@
 	    _this.state = {
 	      in: 'Jade here... HTML over there -->',
 	      out: '',
-	      err: ''
+	      err: '',
+	      transpiler: 'jsx'
 	    };
 	    _this.update = _this.update.bind(_this);
 	    return _this;
@@ -88,17 +89,22 @@
 	    value: function update(e) {
 	      var code = e.target.value;
 	      try {
-	        this.setState({ // ,
-	          // out: jade.render(code, {
-	          //   pretty: ' '
-	          // }),
-	          // out: CoffeeScript.compile(code, {bare:true}),
-	          out: babel.transform(code, {
-	            stage: 0,
-	            loose: 'all'
-	          }).code,
-	          err: ''
-	        });
+	        if (this.state.transpiler === 'jsx') {
+	          this.setState({
+	            out: babel.transform(code, {
+	              stage: 0,
+	              loose: 'all'
+	            }).code,
+	            err: ''
+	          });
+	        } else {
+	          this.setState({
+	            out: jade.render(code, {
+	              pretty: ' '
+	            }),
+	            err: ''
+	          });
+	        }
 	      } catch (err) {
 	        this.setState({ err: " Syntax error: " + err.message });
 	      }
@@ -116,10 +122,11 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      console.log('App:render', this.state);
 	      return React.createElement(
 	        'div',
 	        null,
-	        React.createElement(Header, null),
+	        React.createElement(Header, { app: this }),
 	        React.createElement(
 	          'div',
 	          { className: 'container', style: styles.cont },
@@ -19836,7 +19843,8 @@
 	    fontFamily: 'Lato',
 	    fontSize: '1.2rem',
 	    padding: '0.2rem',
-	    backgroundColor: 'rgba(240,240,240,0.8)'
+	    backgroundColor: 'rgba(240,240,240,0.8)',
+	    border: 'none'
 	  },
 	  footer: {
 	    position: 'fixed',
@@ -19933,6 +19941,11 @@
 
 	var Header = _react2.default.createClass({
 	  displayName: 'Header',
+	  handleSelectChange: function handleSelectChange(e) {
+	    this.props.app.setState({
+	      transpiler: e.target.value
+	    });
+	  },
 
 	  render: function render() {
 	    return _react2.default.createElement(
@@ -19946,10 +19959,18 @@
 	        'TRANSPILATOR'
 	      ),
 	      _react2.default.createElement(
-	        'div',
-	        { style: _Styles2.default.pick },
-	        ' Jade',
-	        _react2.default.createElement('i', { className: 'fa fa-caret-down' })
+	        'select',
+	        { style: _Styles2.default.pick, onChange: this.handleSelectChange },
+	        _react2.default.createElement(
+	          'option',
+	          { value: 'jsx' },
+	          'JSX'
+	        ),
+	        _react2.default.createElement(
+	          'option',
+	          { value: 'jade' },
+	          'Jade'
+	        )
 	      )
 	    );
 	  }

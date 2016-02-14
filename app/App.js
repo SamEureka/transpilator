@@ -12,41 +12,58 @@ class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      in: 'Jade here... HTML over there -->',
+      in: '',
       out: '',
       err: '',
+      transpiler: 'coffee',
     }
     this.update = this.update.bind(this);
   }
   update(e){
     let code = e.target.value;
     try {
-      this.setState({ // ,
-        // out: jade.render(code, {
-        //   pretty: ' '
-        // }),
-        // out: CoffeeScript.compile(code, {bare:true}),
-        out: babel.transform(code, {
-          stage: 0,
-          loose: 'all'
-        }).code,
-        err: '',
-      })
+      if (this.state.transpiler === 'jsx') {
+        this.setState({
+          in: 'JSX here... JavaScript over there -->',
+          out: babel.transform(code, {
+            stage: 0,
+            loose: 'all'
+          }).code,
+
+        })
+      } else if (this.state.transpiler === 'jade'){
+        this.setState({
+          in: 'Jade here... HTML over there -->',
+          out: jade.render(code, {
+            pretty: ' ',
+
+          }),
+        })
+      } else {
+        this.setState({
+          in: 'CoffeeScript here... JavaScript over there -->',
+          out: CoffeeScript.compile(code, {
+            bare:true,
+
+          }),
+        })
+      }
     }
     catch(err) {
       this.setState({err: " Syntax error: " + err.message})
     }
   }
-  componentWillMount () {
-    window.addEventListener('keydown', tabInsert, false);
+  componentDidMount () {
+    document.getElementById('inputArea').addEventListener('keydown', tabInsert, false);
   }
   componentWillUnmount () {
-    window.removeEventListener('keydown', tabInsert, false);
+    document.getElementById('inputArea').removeEventListener('keydown', tabInsert, false);
   }
   render() {
+    // console.log('App:render', this.state);
     return (
     <div>
-      <Header />
+      <Header app={this} />
       <div className="container" style={styles.cont}>
         <textarea
           id="inputArea"

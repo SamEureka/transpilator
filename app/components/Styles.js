@@ -81,6 +81,7 @@ var styles = {
     fontSize: '1.2rem',
     padding: '0.2rem',
     backgroundColor: 'rgba(240,240,240,0.8)',
+    border: 'none',
   },
   footer: {
     position: 'fixed',
