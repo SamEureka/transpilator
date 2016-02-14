@@ -75,10 +75,10 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this));
 
 	    _this.state = {
-	      in: 'Jade here... HTML over there -->',
+	      in: '',
 	      out: '',
 	      err: '',
-	      transpiler: 'jsx'
+	      transpiler: 'coffee'
 	    };
 	    _this.update = _this.update.bind(_this);
 	    return _this;
@@ -91,18 +91,28 @@
 	      try {
 	        if (this.state.transpiler === 'jsx') {
 	          this.setState({
+	            in: 'JSX here... JavaScript over there -->',
 	            out: babel.transform(code, {
 	              stage: 0,
 	              loose: 'all'
-	            }).code,
-	            err: ''
+	            }).code
+
+	          });
+	        } else if (this.state.transpiler === 'jade') {
+	          this.setState({
+	            in: 'Jade here... HTML over there -->',
+	            out: jade.render(code, {
+	              pretty: ' '
+
+	            })
 	          });
 	        } else {
 	          this.setState({
-	            out: jade.render(code, {
-	              pretty: ' '
-	            }),
-	            err: ''
+	            in: 'CoffeeScript here... JavaScript over there -->',
+	            out: CoffeeScript.compile(code, {
+	              bare: true
+
+	            })
 	          });
 	        }
 	      } catch (err) {
@@ -110,19 +120,19 @@
 	      }
 	    }
 	  }, {
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
-	      window.addEventListener('keydown', tabInsert, false);
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      document.getElementById('inputArea').addEventListener('keydown', tabInsert, false);
 	    }
 	  }, {
 	    key: 'componentWillUnmount',
 	    value: function componentWillUnmount() {
-	      window.removeEventListener('keydown', tabInsert, false);
+	      document.getElementById('inputArea').removeEventListener('keydown', tabInsert, false);
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      console.log('App:render', this.state);
+	      // console.log('App:render', this.state);
 	      return React.createElement(
 	        'div',
 	        null,
@@ -19943,7 +19953,8 @@
 	  displayName: 'Header',
 	  handleSelectChange: function handleSelectChange(e) {
 	    this.props.app.setState({
-	      transpiler: e.target.value
+	      transpiler: e.target.value,
+	      err: ''
 	    });
 	  },
 
@@ -19961,6 +19972,11 @@
 	      _react2.default.createElement(
 	        'select',
 	        { style: _Styles2.default.pick, onChange: this.handleSelectChange },
+	        _react2.default.createElement(
+	          'option',
+	          { value: 'coffee' },
+	          'CoffeeScript'
+	        ),
 	        _react2.default.createElement(
 	          'option',
 	          { value: 'jsx' },
