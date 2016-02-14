@@ -59,105 +59,12 @@
 	// Import the modules
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
-	var jade = __webpack_require__(159);
-
-	var OtherComponent = __webpack_require__(160);
-
-	// All the styles in one object
-	var styles = {
-	  text: {
-	    position: 'fixed',
-	    width: '48.01vw',
-	    height: '100vh',
-	    fontFamily: 'Source Code Pro',
-	    fontSize: '1.1rem',
-	    top: '3.5rem',
-	    left: 0,
-	    paddingTop: 10,
-	    paddingRight: '1vw',
-	    paddingLeft: '1vw',
-	    backgroundColor: 'rgba(70,130,180,0.1)',
-	    color: '#222',
-	    resize: 'none',
-	    overflow: 'auto',
-	    border: 0
-	  },
-	  pre: {
-	    position: 'fixed',
-	    backgroundColor: 'rgba(70,230,180,0.2)',
-	    width: '48.01vw',
-	    height: '100vh',
-	    fontFamily: 'Source Code Pro',
-	    fontSize: '1.1rem',
-	    top: '2.4rem',
-	    right: 0,
-	    paddingTop: 10,
-	    paddingLeft: '1vw',
-	    paddingRight: '1vw',
-	    color: '#222',
-	    whiteSpace: 'pre-wrap',
-	    wordWrap: 'break-word',
-	    overflow: 'auto'
-	  },
-	  header: {
-	    backgroundColor: 'rgba(240,240,240,0.5)',
-	    position: 'fixed',
-	    top: 0,
-	    color: '#666',
-	    height: '3rem',
-	    width: '100vw',
-	    fontFamily: 'Brandon+Grotesque',
-	    fontSize: '2rem',
-	    paddingLeft: '0.5rem',
-	    paddingTop: '0.5rem'
-	  },
-	  error: {
-	    position: 'fixed',
-	    left: 0,
-	    bottom: 2,
-	    height: 'auto',
-	    overflow: 'auto',
-	    backgroundColor: 'rgb(244, 164, 165)',
-	    color: 'red',
-	    fontSize: '1.1em',
-	    borderRadius: '3px',
-	    borderTop: '1px dotted red',
-	    borderRight: '1px dotted red',
-	    borderBottom: '1px dotted red',
-	    zIndex: 1
-	  },
-	  cont: {
-	    height: '100vh',
-	    display: 'flex'
-	  },
-	  blue: {
-	    color: 'steelblue'
-	  },
-	  red: {
-	    color: 'rgba(225, 55, 55,0.5)'
-	  },
-	  green: {
-	    color: 'rgba(50,250,55,0.2)'
-	  },
-	  pick: {
-	    position: 'fixed',
-	    right: '1rem',
-	    top: '0.7rem',
-	    fontFamily: 'Lato',
-	    fontSize: '1.2rem',
-	    padding: '0.2rem',
-	    backgroundColor: 'rgba(240,240,240,0.8)'
-	  },
-	  footer: {
-	    position: 'fixed',
-	    bottom: '0.8rem',
-	    right: '0.8rem',
-	    textDecoration: 'none',
-	    color: 'rgba(55,55,55,0.6)',
-	    fontFamily: 'Lato',
-	    fontSize: '0.8rem'
-	  }
-	};
+	var styles = __webpack_require__(159);
+	var Footer = __webpack_require__(160);
+	var Header = __webpack_require__(161);
+	var tabInsert = __webpack_require__(162);
+	//var CoffeeScript = require('coffee-script');
+	//var jade = require('jade');
 
 	var App = function (_React$Component) {
 	  _inherits(App, _React$Component);
@@ -170,7 +77,8 @@
 	    _this.state = {
 	      in: 'Jade here... HTML over there -->',
 	      out: '',
-	      err: ''
+	      err: '',
+	      transpiler: 'jsx'
 	    };
 	    _this.update = _this.update.bind(_this);
 	    return _this;
@@ -181,43 +89,51 @@
 	    value: function update(e) {
 	      var code = e.target.value;
 	      try {
-	        this.setState({
-	          out: jade.render(code, {
-	            pretty: ' '
-	          }),
-	          err: ''
-	        });
+	        if (this.state.transpiler === 'jsx') {
+	          this.setState({
+	            out: babel.transform(code, {
+	              stage: 0,
+	              loose: 'all'
+	            }).code,
+	            err: ''
+	          });
+	        } else {
+	          this.setState({
+	            out: jade.render(code, {
+	              pretty: ' '
+	            }),
+	            err: ''
+	          });
+	        }
 	      } catch (err) {
 	        this.setState({ err: " Syntax error: " + err.message });
 	      }
 	    }
 	  }, {
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      window.addEventListener('keydown', tabInsert, false);
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      window.removeEventListener('keydown', tabInsert, false);
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      console.log('App:render', this.state);
 	      return React.createElement(
 	        'div',
 	        null,
-	        React.createElement(
-	          'header',
-	          { style: styles.header },
-	          React.createElement('i', { style: styles.red, className: 'fa fa-code ' }),
-	          React.createElement('i', { style: styles.blue, className: 'fa fa-code' }),
-	          React.createElement(
-	            'span',
-	            null,
-	            'TRANSPILATOR'
-	          ),
-	          React.createElement(
-	            'div',
-	            { style: styles.pick },
-	            ' Jade ',
-	            React.createElement('i', { className: 'fa fa-caret-down' })
-	          )
-	        ),
+	        React.createElement(Header, { app: this }),
 	        React.createElement(
 	          'div',
 	          { className: 'container', style: styles.cont },
-	          React.createElement('textarea', { id: 'boom', style: styles.text, placeholder: this.state.in,
+	          React.createElement('textarea', {
+	            id: 'inputArea',
+	            style: styles.text,
+	            placeholder: this.state.in,
 	            onChange: this.update }),
 	          React.createElement(
 	            'pre',
@@ -229,37 +145,7 @@
 	            { style: styles.error },
 	            this.state.err
 	          ),
-	          React.createElement(
-	            'div',
-	            { style: styles.footer },
-	            'Made with ',
-	            React.createElement('a', { href: 'http://en.wikipedia.org/wiki/Love', className: 'fa fa-heart-o fa-lg' }),
-	            ' by ',
-	            ' ',
-	            React.createElement(
-	              'a',
-	              { href: 'http://sam.dennon.me' },
-	              'Sam Dennon'
-	            ),
-	            ' & ',
-	            React.createElement(
-	              'a',
-	              { href: 'http://mattborn.com/' },
-	              'Matt Born'
-	            ),
-	            ' - ',
-	            ' ',
-	            React.createElement('a', { href: 'http://creativecommons.org/licenses/by/4.0/', className: 'fa fa-creative-commons fa-lg' }),
-	            ' - Hosted by ',
-	            '  ',
-	            React.createElement(
-	              'a',
-	              { className: 'fa fa-github-alt fa-lg', href: 'http://www.github.com' },
-	              ' ',
-	              '  '
-	            ),
-	            ' Github'
-	          )
+	          React.createElement(Footer, null)
 	        )
 	      );
 	    }
@@ -269,19 +155,6 @@
 	}(React.Component);
 
 	ReactDOM.render(React.createElement(App, null), document.getElementById('app'));
-
-	// Because we don't want to tab out of the textarea!
-	document.getElementById('boom').addEventListener('keydown', function (e) {
-	  if (e.keyCode === 9) {
-	    var start = this.selectionStart;
-	    var end = this.selectionEnd;
-	    var target = e.target;
-	    var value = target.value;
-	    target.value = value.substring(0, start) + "  " + value.substring(end);
-	    this.selectionStart = this.selectionEnd = start + 2;
-	    e.preventDefault();
-	  }
-	}, false);
 
 	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/Users/sdennon/bloc/transpilator/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "App.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
@@ -19882,9 +19755,111 @@
 
 /***/ },
 /* 159 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = jade;
+	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("/Users/sdennon/bloc/transpilator/node_modules/react-hot-loader/node_modules/react-hot-api/modules/index.js"), RootInstanceProvider = require("/Users/sdennon/bloc/transpilator/node_modules/react-hot-loader/RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
+
+	'use strict';
+
+	var styles = {
+	  text: {
+	    position: 'fixed',
+	    width: '48.01vw',
+	    height: '100vh',
+	    fontFamily: 'Source Code Pro',
+	    fontSize: '1.1rem',
+	    top: '3.5rem',
+	    left: 0,
+	    paddingTop: 10,
+	    paddingRight: '1vw',
+	    paddingLeft: '1vw',
+	    backgroundColor: 'rgba(70,130,180,0.1)',
+	    color: '#222',
+	    resize: 'none',
+	    overflow: 'auto',
+	    border: 0
+	  },
+	  pre: {
+	    position: 'fixed',
+	    backgroundColor: 'rgba(70,230,180,0.2)',
+	    width: '48.01vw',
+	    height: '100vh',
+	    fontFamily: 'Source Code Pro',
+	    fontSize: '1.1rem',
+	    top: '2.4rem',
+	    right: 0,
+	    paddingTop: 10,
+	    paddingLeft: '1vw',
+	    paddingRight: '1vw',
+	    color: '#222',
+	    whiteSpace: 'pre-wrap',
+	    wordWrap: 'break-word',
+	    overflow: 'auto'
+	  },
+	  header: {
+	    backgroundColor: 'rgba(240,240,240,0.5)',
+	    position: 'fixed',
+	    top: 0,
+	    color: '#666',
+	    height: '3rem',
+	    width: '100vw',
+	    fontFamily: 'Brandon+Grotesque',
+	    fontSize: '2rem',
+	    paddingLeft: '0.5rem',
+	    paddingTop: '0.5rem'
+	  },
+	  error: {
+	    position: 'fixed',
+	    left: 0,
+	    bottom: 2,
+	    height: 'auto',
+	    overflow: 'auto',
+	    backgroundColor: 'rgb(244, 164, 165)',
+	    color: 'red',
+	    fontSize: '1.1em',
+	    borderRadius: '3px',
+	    borderTop: '1px dotted red',
+	    borderRight: '1px dotted red',
+	    borderBottom: '1px dotted red',
+	    zIndex: 1
+	  },
+	  cont: {
+	    height: '100vh',
+	    display: 'flex'
+	  },
+	  blue: {
+	    color: 'steelblue'
+	  },
+	  red: {
+	    color: 'rgba(225, 55, 55,0.5)'
+	  },
+	  green: {
+	    color: 'rgba(50,250,55,0.2)'
+	  },
+	  pick: {
+	    position: 'fixed',
+	    right: '1rem',
+	    top: '0.7rem',
+	    fontFamily: 'Lato',
+	    fontSize: '1.2rem',
+	    padding: '0.2rem',
+	    backgroundColor: 'rgba(240,240,240,0.8)',
+	    border: 'none'
+	  },
+	  footer: {
+	    position: 'fixed',
+	    bottom: '0.8rem',
+	    right: '0.8rem',
+	    textDecoration: 'none',
+	    color: 'rgba(55,55,55,0.6)',
+	    fontFamily: 'Lato',
+	    fontSize: '0.8rem'
+	  }
+	};
+
+	module.exports = styles;
+
+	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/Users/sdennon/bloc/transpilator/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "Styles.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
 /***/ },
 /* 160 */
@@ -19894,51 +19869,142 @@
 
 	'use strict';
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	var _react = __webpack_require__(1);
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	var _react2 = _interopRequireDefault(_react);
 
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	var _Styles = __webpack_require__(159);
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	var _Styles2 = _interopRequireDefault(_Styles);
 
-	var React = __webpack_require__(1);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var OtherComponent = function (_React$Component) {
-	  _inherits(OtherComponent, _React$Component);
+	var Footer = _react2.default.createClass({
+	    displayName: 'Footer',
 
-	  function OtherComponent(props) {
-	    _classCallCheck(this, OtherComponent);
-
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(OtherComponent).call(this, props));
-
-	    _this.state = {};
-	    return _this;
-	  }
-
-	  _createClass(OtherComponent, [{
-	    key: 'render',
-	    value: function render() {
-	      var styles = {
-	        root: {
-	          color: 'red',
-	          fontSize: 200
-	        }
-	      };
-	      return React.createElement(
-	        'div',
-	        { style: styles.root },
-	        'Other component'
-	      );
+	    render: function render() {
+	        return _react2.default.createElement(
+	            'div',
+	            { style: _Styles2.default.footer },
+	            'Made with ',
+	            _react2.default.createElement('a', { href: 'http://en.wikipedia.org/wiki/Love', className: 'fa fa-heart-o fa-lg' }),
+	            ' by ',
+	            ' ',
+	            _react2.default.createElement(
+	                'a',
+	                { href: 'http://sam.dennon.me' },
+	                'Sam Dennon'
+	            ),
+	            ' & ',
+	            _react2.default.createElement(
+	                'a',
+	                { href: 'http://mattborn.com/' },
+	                'Matt Born'
+	            ),
+	            ' - ',
+	            ' ',
+	            _react2.default.createElement('a', { href: 'http://creativecommons.org/licenses/by/4.0/', className: 'fa fa-creative-commons fa-lg' }),
+	            ' - Hosted by ',
+	            '  ',
+	            _react2.default.createElement(
+	                'a',
+	                { className: 'fa fa-github-alt fa-lg', href: 'http://www.github.com' },
+	                ' ',
+	                '  '
+	            ),
+	            ' Github'
+	        );
 	    }
-	  }]);
+	});
 
-	  return OtherComponent;
-	}(React.Component);
+	module.exports = Footer;
 
-	module.exports = OtherComponent;
+	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/Users/sdennon/bloc/transpilator/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "Footer.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
-	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/Users/sdennon/bloc/transpilator/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "OtherComponent.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+/***/ },
+/* 161 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("/Users/sdennon/bloc/transpilator/node_modules/react-hot-loader/node_modules/react-hot-api/modules/index.js"), RootInstanceProvider = require("/Users/sdennon/bloc/transpilator/node_modules/react-hot-loader/RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
+
+	'use strict';
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Styles = __webpack_require__(159);
+
+	var _Styles2 = _interopRequireDefault(_Styles);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Header = _react2.default.createClass({
+	  displayName: 'Header',
+	  handleSelectChange: function handleSelectChange(e) {
+	    this.props.app.setState({
+	      transpiler: e.target.value
+	    });
+	  },
+
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'header',
+	      { style: _Styles2.default.header },
+	      _react2.default.createElement('i', { style: _Styles2.default.red, className: 'fa fa-code ' }),
+	      _react2.default.createElement('i', { style: _Styles2.default.blue, className: 'fa fa-code' }),
+	      _react2.default.createElement(
+	        'span',
+	        null,
+	        'TRANSPILATOR'
+	      ),
+	      _react2.default.createElement(
+	        'select',
+	        { style: _Styles2.default.pick, onChange: this.handleSelectChange },
+	        _react2.default.createElement(
+	          'option',
+	          { value: 'jsx' },
+	          'JSX'
+	        ),
+	        _react2.default.createElement(
+	          'option',
+	          { value: 'jade' },
+	          'Jade'
+	        )
+	      )
+	    );
+	  }
+	});
+
+	module.exports = Header;
+
+	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/Users/sdennon/bloc/transpilator/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "Header.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+
+/***/ },
+/* 162 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("/Users/sdennon/bloc/transpilator/node_modules/react-hot-loader/node_modules/react-hot-api/modules/index.js"), RootInstanceProvider = require("/Users/sdennon/bloc/transpilator/node_modules/react-hot-loader/RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
+
+	"use strict";
+
+	// Because we don't want to tab out of the textarea!
+
+	var tabInsert = function tabInsert(e) {
+	  if (e.keyCode === 9) {
+	    var start = this.selectionStart;
+	    var end = this.selectionEnd;
+	    var target = e.target;
+	    var value = target.value;
+	    target.value = value.substring(0, start) + "  " + value.substring(end);
+	    this.selectionStart = this.selectionEnd = start + 2;
+	    e.preventDefault();
+	  }
+	};
+
+	module.exports = tabInsert;
+
+	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/Users/sdennon/bloc/transpilator/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "Helpers.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
 /***/ }
 /******/ ]);
