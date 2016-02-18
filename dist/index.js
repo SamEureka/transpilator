@@ -79,8 +79,7 @@
 	      in: '',
 	      out: '',
 	      err: '',
-	      transpiler: 'jade',
-	      placeholder: 'Jade here... HTML over there -->'
+	      transpiler: 'jade'
 	    };
 	    _this.update = _this.update.bind(_this);
 	    return _this;
@@ -98,8 +97,7 @@
 	              stage: 0,
 	              loose: 'all'
 	            }).code,
-	            err: '.',
-	            placeholder: 'JSX here... JavaScript over there -->'
+	            err: '.'
 	          });
 	        } else if (this.state.transpiler === 'jade') {
 	          this.setState({
@@ -108,8 +106,7 @@
 	            out: jade.render(code, {
 	              pretty: ' '
 	            }),
-	            err: '',
-	            placeholder: 'Jade here... HTML over there -->'
+	            err: ''
 	          });
 	        } else {
 	          this.setState({
@@ -118,7 +115,6 @@
 	            out: CoffeeScript.compile(code, {
 	              bare: true
 	            }),
-	            placeholder: 'CoffeeScript here... JavaScript over there -->',
 	            err: ''
 	          });
 	        }
@@ -139,7 +135,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      // console.log('App:render', this.state);
+	      console.log('App:render', this.state);
 	      return React.createElement(
 	        'div',
 	        null,
@@ -147,6 +143,25 @@
 	        React.createElement(
 	          'div',
 	          { className: 'container', style: styles.cont },
+	          React.createElement(
+	            'select',
+	            { style: styles.pick, onChange: this.handleSelectChange },
+	            React.createElement(
+	              'option',
+	              { value: 'jade' },
+	              'Jade'
+	            ),
+	            React.createElement(
+	              'option',
+	              { value: 'jsx' },
+	              'JSX'
+	            ),
+	            React.createElement(
+	              'option',
+	              { value: 'coffee' },
+	              'CoffeeScript'
+	            )
+	          ),
 	          React.createElement('textarea', {
 	            id: 'inputArea',
 	            style: styles.text,
@@ -19787,14 +19802,15 @@
 	    fontSize: '1.1rem',
 	    top: '3.5rem',
 	    left: 0,
-	    paddingTop: 10,
+	    paddingTop: '1.6rem',
 	    paddingRight: '1vw',
 	    paddingLeft: '1vw',
 	    backgroundColor: 'rgba(70,130,180,0.1)',
 	    color: '#222',
 	    resize: 'none',
 	    overflow: 'auto',
-	    border: 0
+	    border: 0,
+	    zIndex: 1
 	  },
 	  pre: {
 	    position: 'fixed',
@@ -19808,7 +19824,7 @@
 	    paddingTop: 10,
 	    paddingLeft: '1vw',
 	    paddingRight: '1vw',
-	    paddingBottom: '1.1rem',
+	    paddingTop: '1.4rem',
 	    color: '#222',
 	    whiteSpace: 'pre-wrap',
 	    wordWrap: 'break-word',
@@ -19839,7 +19855,7 @@
 	    borderTop: '1px dotted red',
 	    borderRight: '1px dotted red',
 	    borderBottom: '1px dotted red',
-	    zIndex: 1
+	    zIndex: 3
 	  },
 	  cont: {
 	    height: '100vh',
@@ -19856,13 +19872,14 @@
 	  },
 	  pick: {
 	    position: 'fixed',
-	    right: '1rem',
-	    top: '0.7rem',
+	    right: '51vw',
+	    top: '4.2rem',
 	    fontFamily: 'Lato',
 	    fontSize: '1.2rem',
 	    padding: '0.2rem',
 	    backgroundColor: 'rgba(240,240,240,0.8)',
-	    border: 'none'
+	    border: 'none',
+	    zIndex: 100
 	  },
 	  footer: {
 	    position: 'fixed',
@@ -19976,25 +19993,6 @@
 	        'span',
 	        null,
 	        'TRANSPILATOR'
-	      ),
-	      _react2.default.createElement(
-	        'select',
-	        { style: _Styles2.default.pick, onChange: this.handleSelectChange },
-	        _react2.default.createElement(
-	          'option',
-	          { value: 'jade' },
-	          'Jade'
-	        ),
-	        _react2.default.createElement(
-	          'option',
-	          { value: 'jsx' },
-	          'JSX'
-	        ),
-	        _react2.default.createElement(
-	          'option',
-	          { value: 'coffee' },
-	          'CoffeeScript'
-	        )
 	      )
 	    );
 	  }

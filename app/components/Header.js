@@ -14,11 +14,7 @@ var Header = React.createClass({
         <i style={styles.red} className="fa fa-code "></i>
         <i style={styles.blue} className="fa fa-code"></i>
         <span>TRANSPILATOR</span>
-        <select style={styles.pick} onChange={this.handleSelectChange}>
-          <option value="jade">Jade</option>
-          <option value="jsx">JSX</option>
-          <option value="coffee">CoffeeScript</option>
-        </select>
+
       </header>
     )
   }

@@ -12,12 +12,11 @@ class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      
+
       in: '',
       out: '',
       err: '',
       transpiler: 'jade',
-      placeholder: 'Jade here... HTML over there -->',
     }
     this.update = this.update.bind(this);
   }
@@ -32,26 +31,23 @@ class App extends React.Component {
             loose: 'all'
           }).code,
           err: '.',
-          placeholder: 'JSX here... JavaScript over there -->',
         })
       } else if (this.state.transpiler === 'jade'){
         this.setState({
           in: '',
-          
+
           out: jade.render(code, {
             pretty: ' ',
           }),
           err: '',
-          placeholder: 'Jade here... HTML over there -->',
         })
       } else {
         this.setState({
           in: '',
-          
+
           out: CoffeeScript.compile(code, {
             bare:true,
           }),
-          placeholder: 'CoffeeScript here... JavaScript over there -->',
           err: '',
         })
       }
@@ -67,11 +63,16 @@ class App extends React.Component {
     document.getElementById('inputArea').removeEventListener('keydown', tabInsert, false);
   }
   render() {
-    // console.log('App:render', this.state);
+    console.log('App:render', this.state);
     return (
     <div>
       <Header app={this} />
       <div className="container" style={styles.cont}>
+        <select style={styles.pick} onChange={this.handleSelectChange}>
+          <option value="jade">Jade</option>
+          <option value="jsx">JSX</option>
+          <option value="coffee">CoffeeScript</option>
+        </select>
         <textarea
           id="inputArea"
           style={styles.text}

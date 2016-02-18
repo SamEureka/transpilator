@@ -7,14 +7,15 @@ var styles = {
     fontSize: '1.1rem',
     top: '3.5rem',
     left: 0,
-    paddingTop: 10,
+    paddingTop: '1.6rem',
     paddingRight: '1vw',
     paddingLeft: '1vw',
     backgroundColor: 'rgba(70,130,180,0.1)',
     color: '#222',
     resize: 'none',
     overflow: 'auto',
-    border: 0
+    border: 0,
+    zIndex: 1,
   },
   pre: {
     position: 'fixed',
@@ -28,7 +29,7 @@ var styles = {
     paddingTop: 10,
     paddingLeft: '1vw',
     paddingRight: '1vw',
-    paddingBottom: '1.1rem',
+    paddingTop: '1.4rem',
     color: '#222',
     whiteSpace: 'pre-wrap',
     wordWrap: 'break-word',
@@ -44,7 +45,7 @@ var styles = {
     fontFamily: 'Brandon+Grotesque',
     fontSize: '2rem',
     paddingLeft: '0.5rem',
-    paddingTop: '0.5rem'
+    paddingTop: '0.5rem',
   },
   error: {
     position: 'fixed',
@@ -59,7 +60,7 @@ var styles = {
     borderTop: '1px dotted red',
     borderRight: '1px dotted red',
     borderBottom: '1px dotted red',
-    zIndex: 1
+    zIndex: 3,
     },
   cont: {
     height: '100vh',
@@ -76,13 +77,14 @@ var styles = {
   },
   pick: {
     position: 'fixed',
-    right: '1rem',
-    top: '0.7rem',
+    right: '51vw',
+    top: '4.2rem',
     fontFamily: 'Lato',
     fontSize: '1.2rem',
     padding: '0.2rem',
     backgroundColor: 'rgba(240,240,240,0.8)',
     border: 'none',
+    zIndex: 100,
   },
   footer: {
     position: 'fixed',
