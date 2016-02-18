@@ -75,10 +75,12 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this));
 
 	    _this.state = {
+
 	      in: '',
 	      out: '',
 	      err: '',
-	      transpiler: 'coffee'
+	      transpiler: 'jade',
+	      placeholder: 'Jade here... HTML over there -->'
 	    };
 	    _this.update = _this.update.bind(_this);
 	    return _this;
@@ -91,28 +93,33 @@
 	      try {
 	        if (this.state.transpiler === 'jsx') {
 	          this.setState({
-	            in: 'JSX here... JavaScript over there -->',
+	            in: '',
 	            out: babel.transform(code, {
 	              stage: 0,
 	              loose: 'all'
-	            }).code
-
+	            }).code,
+	            err: '.',
+	            placeholder: 'JSX here... JavaScript over there -->'
 	          });
 	        } else if (this.state.transpiler === 'jade') {
 	          this.setState({
-	            in: 'Jade here... HTML over there -->',
+	            in: '',
+
 	            out: jade.render(code, {
 	              pretty: ' '
-
-	            })
+	            }),
+	            err: '',
+	            placeholder: 'Jade here... HTML over there -->'
 	          });
 	        } else {
 	          this.setState({
-	            in: 'CoffeeScript here... JavaScript over there -->',
+	            in: '',
+
 	            out: CoffeeScript.compile(code, {
 	              bare: true
-
-	            })
+	            }),
+	            placeholder: 'CoffeeScript here... JavaScript over there -->',
+	            err: ''
 	          });
 	        }
 	      } catch (err) {
@@ -143,7 +150,7 @@
 	          React.createElement('textarea', {
 	            id: 'inputArea',
 	            style: styles.text,
-	            placeholder: this.state.in,
+	            placeholder: this.state.placeholder,
 	            onChange: this.update }),
 	          React.createElement(
 	            'pre',
@@ -153,7 +160,7 @@
 	          React.createElement(
 	            'div',
 	            { style: styles.error },
-	            this.state.err.bind(this)
+	            this.state.err
 	          ),
 	          React.createElement(Footer, null)
 	        )
@@ -19975,8 +19982,8 @@
 	        { style: _Styles2.default.pick, onChange: this.handleSelectChange },
 	        _react2.default.createElement(
 	          'option',
-	          { value: 'coffee' },
-	          'CoffeeScript'
+	          { value: 'jade' },
+	          'Jade'
 	        ),
 	        _react2.default.createElement(
 	          'option',
@@ -19985,8 +19992,8 @@
 	        ),
 	        _react2.default.createElement(
 	          'option',
-	          { value: 'jade' },
-	          'Jade'
+	          { value: 'coffee' },
+	          'CoffeeScript'
 	        )
 	      )
 	    );
