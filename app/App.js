@@ -12,10 +12,12 @@ class App extends React.Component {
   constructor(){
     super();
     this.state = {
+      
       in: '',
       out: '',
       err: '',
-      transpiler: 'coffee',
+      transpiler: 'jade',
+      placeholder: 'Jade here... HTML over there -->',
     }
     this.update = this.update.bind(this);
   }
@@ -24,28 +26,33 @@ class App extends React.Component {
     try {
       if (this.state.transpiler === 'jsx') {
         this.setState({
-          in: 'JSX here... JavaScript over there -->',
+          in: '',
           out: babel.transform(code, {
             stage: 0,
             loose: 'all'
           }).code,
-
+          err: '.',
+          placeholder: 'JSX here... JavaScript over there -->',
         })
       } else if (this.state.transpiler === 'jade'){
         this.setState({
-          in: 'Jade here... HTML over there -->',
+          in: '',
+          
           out: jade.render(code, {
             pretty: ' ',
-
           }),
+          err: '',
+          placeholder: 'Jade here... HTML over there -->',
         })
       } else {
         this.setState({
-          in: 'CoffeeScript here... JavaScript over there -->',
+          in: '',
+          
           out: CoffeeScript.compile(code, {
             bare:true,
-
           }),
+          placeholder: 'CoffeeScript here... JavaScript over there -->',
+          err: '',
         })
       }
     }
@@ -68,7 +75,7 @@ class App extends React.Component {
         <textarea
           id="inputArea"
           style={styles.text}
-          placeholder={this.state.in}
+          placeholder={this.state.placeholder}
           onChange={this.update}>
         </textarea>
         <pre style={styles.pre}>{this.state.out}</pre>

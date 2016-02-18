@@ -153,7 +153,7 @@
 	          React.createElement(
 	            'div',
 	            { style: styles.error },
-	            this.state.err
+	            this.state.err.bind(this)
 	          ),
 	          React.createElement(Footer, null)
 	        )
@@ -19801,6 +19801,7 @@
 	    paddingTop: 10,
 	    paddingLeft: '1vw',
 	    paddingRight: '1vw',
+	    paddingBottom: '1.1rem',
 	    color: '#222',
 	    whiteSpace: 'pre-wrap',
 	    wordWrap: 'break-word',

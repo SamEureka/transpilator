@@ -28,6 +28,7 @@ var styles = {
     paddingTop: 10,
     paddingLeft: '1vw',
     paddingRight: '1vw',
+    paddingBottom: '1.1rem',
     color: '#222',
     whiteSpace: 'pre-wrap',
     wordWrap: 'break-word',
