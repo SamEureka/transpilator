@@ -12,9 +12,8 @@ class App extends React.Component {
   constructor(){
     super();
     this.state = {
-
-      in: '',
-      out: '',
+      input: '',
+      output: '',
       err: '',
       transpiler: 'jade',
     }
@@ -25,8 +24,8 @@ class App extends React.Component {
     try {
       if (this.state.transpiler === 'jsx') {
         this.setState({
-          in: '',
-          out: babel.transform(code, {
+          input: '',
+          output: babel.transform(code, {
             stage: 0,
             loose: 'all'
           }).code,
@@ -34,18 +33,17 @@ class App extends React.Component {
         })
       } else if (this.state.transpiler === 'jade'){
         this.setState({
-          in: '',
+          input: '',
 
-          out: jade.render(code, {
+          output: jade.render(code, {
             pretty: ' ',
           }),
           err: '',
         })
       } else {
         this.setState({
-          in: '',
-
-          out: CoffeeScript.compile(code, {
+          input: '',
+          output: CoffeeScript.compile(code, {
             bare:true,
           }),
           err: '',
@@ -79,7 +77,7 @@ class App extends React.Component {
           placeholder={this.state.placeholder}
           onChange={this.update}>
         </textarea>
-        <pre style={styles.pre}>{this.state.out}</pre>
+        <pre style={styles.pre}>{this.state.output}</pre>
           <div style={styles.error}>{this.state.err}</div>
           <Footer />
       </div>
