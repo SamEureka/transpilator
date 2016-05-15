@@ -5,87 +5,19 @@ import md5 from 'md5';
 // import CodeMirror from 'codemirror';
 // import Clipboard from 'clipboard';
 
-const config = {
-  htmlConfig: {
-    readOnly: 'nocursor',
-    lineWrapping: true,
-    tabSize: '2',
-    lineNumbers: true,
-    styleActiveLine: true,
-    matchBrackets: true,
-    theme: 'default',
-    styleActiveLine: true,
-    matchBrackets: true,
-    mode: {
-      name: "htmlmixed",
-      alignCDATA: true,
-    },
-  },
-    jsxConfig: {
-    lineWrapping: true,
-    smartIndent: false,
-    indentWithTabs: true,
-    tabSize: '2',
-    lineNumbers: true,
-    styleActiveLine: true,
-    matchBrackets: true,
-    theme: 'default',
-    styleActiveLine: true,
-    matchBrackets: true,
-    mode: "jsx"
-  },
-  jadeConfig: {
-    keyMap: "sublime",
-    smartIndent: false,
-    indentWithTabs: true,
-    lineWrapping: true,
-    tabSize: '2',
-    lineNumbers: true,
-    styleActiveLine: true,
-    matchBrackets: true,
-    theme: 'default',
-    styleActiveLine: true,
-    matchBrackets: true,
-    mode: {
-      name: "jade",
-      alignCDATA: true,
-    },
-  },
-  markdownConfig: {
-    lineWrapping: true,
-    smartIndent: false,
-    indentWithTabs: true,
-    tabSize: '2',
-    lineNumbers: true,
-    styleActiveLine: true,
-    matchBrackets: true,
-    theme: 'default',
-    styleActiveLine: true,
-    matchBrackets: true,
-    mode: {
-      name: "markdown"
-    },
-  },
-  javascriptConfig: {
-    lineWrapping: true,
-    smartIndent: false,
-    indentWithTabs: true,
-    tabSize: '2',
-    lineNumbers: true,
-    styleActiveLine: true,
-    matchBrackets: true,
-    theme: 'default',
-    styleActiveLine: true,
-    matchBrackets: true,
-    mode: {
-      name: "javascript"
-    }
-  },
-};
+import Gravatar from './components/Gravatar';
+import Pick from './components/Pick';
+import Error from './components/Error';
+import config from './components/Config';
+import styles from './components/Styles';
+import Footer from './components/Footer';
+// import Header from './components/Header';
+
+
 
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       text: '',
       rendered: '',
@@ -120,11 +52,11 @@ class App extends React.Component {
       case "markdown":
         return config.htmlConfig;
       case "jsx":
-        return config.htmlConfig;
+        return config.javascriptConfig;
       case "coffee":
-        return config.htmlConfig;
+        return config.javascriptConfig;
       case "live":
-        return config.htmlConfig;
+        return config.javascriptConfig;
     }
   }
 
@@ -281,7 +213,7 @@ class App extends React.Component {
           grav={this.state.grav}
           />
         <Pick handleSelect={this.handleSelectChange.bind(this)}/>
-        <h2 id="title"><i className="blue fa fa-code"></i>{' '}TRANSPILATOR</h2>
+        <h2>{'</>'}TRANSPILATOR</h2>
       <div className="container">
         <textarea
           className='codemirror'
@@ -302,119 +234,9 @@ class App extends React.Component {
         <Error
           err={this.state.err}
           displayErr={this.state.displayErr} />
+        <Footer />
     </div>)
   }
 }
-
-class Gravatar extends React.Component {
-
-  getGravImg() {
-    return `http://www.gravatar.com/avatar/${this.props.grav}?s=50`;
-  }
-
-  render() {
-    const styles = {
-      image: {
-        borderRadius: '25px',
-        cursor: 'pointer',
-      },
-      boom: {
-        resize: 'none',
-        width: '300px',
-        height: '2rem',
-        backgroundColor: '#EEE',
-        border: 0,
-        borderRadius: '2px',
-        color: '#333',
-        fontFamily: 'Source Code Pro',
-        fontSize: '1.1rem',
-        verticalAlign: 'middle',
-      },
-      container: {
-        display: 'flex',
-        position: 'absolute',
-        float: 'right',
-        right: '1rem',
-      },
-      hidden: {
-        display: 'none',
-      },
-    }
-    return (<div>
-      <div style={styles.container}>
-        <form
-          onSubmit={this.props.handleSubmit}>
-          <input
-            id="gravInput"
-            type="text"
-            style={this.props.enterId
-              ? styles.boom
-              : styles.hidden}
-            placeholder="Enter Gravatar Id"
-            onChange={this.props.handleInput} />
-        </form>
-        <div>
-          <img
-            id="grav"
-            style={styles.image}
-            onClick={this.props.handleClick}
-            src={this.getGravImg()} />
-        </div>
-      </div>
-    </div>)
-  }
-}
-
-class Pick extends React.Component {
-  render(){
-    const styles = {
-      pick: {
-        position: 'fixed',
-        right: '51vw',
-        top: '5rem',
-        fontFamily: 'Source Code Pro',
-        fontSize: '1.2rem',
-        padding: '0.2rem',
-        backgroundColor: '#FFF',
-        border: 'none',
-        zIndex: 100,
-  },
-    }
-    return (
-          <select style={styles.pick} onChange={this.props.handleSelect}>
-          <option value="jade">Jade</option>
-          <option value="jsx">React/JSX</option>
-          <option value="coffee">CoffeeScript</option>
-          <option value="live">LiveScript</option>
-          <option value="markdown">Markdown</option>
-        </select>
-    );
-  }
-}
-
-class Error extends React.Component {
-  render(){
-    const styles = {
-      error: {
-        position: 'fixed',
-        left: '2vw',
-        bottom: '2vw',
-        backgroundColor: 'pink',
-        color: 'red',
-        padding: '0.3rem',
-        width: '90vw',
-        zIndex: '200',
-      },
-      hidden: {
-        display: 'none',
-      }
-    }
-    return(<div>
-        <div
-          style={this.props.displayErr ? styles.error : styles.hidden}>{this.props.err}</div>
-    </div>)
-  }
-}
-
 
 module.exports = App;

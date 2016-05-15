@@ -4,7 +4,7 @@ module.exports = {
   context: __dirname + '/app',
   entry: {
     html: './index.html',
-    javascript: './App.js',
+    javascript: './index.js',
   },
   output: {
     filename: 'index.js',
@@ -22,15 +22,5 @@ module.exports = {
         loaders: ['react-hot', 'babel?presets[]=react,presets[]=es2015'],
       },
     ],
-  },
-  externals: {
-    'jade': 'jade',
-  },
-  plugins: [
-    // new webpack.DefinePlugin({
-    //   // Force HTMLtoJSX to use the in-browser `document` object rather than
-    //   // require the Node-only "jsdom" package.
-    //   IN_BROWSER: true,
-    // })
-  ],
+  }
 };

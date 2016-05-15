@@ -1,4 +1,4 @@
-var styles = {
+const styles = {
   text: {
     position: 'fixed',
     width: '48.01vw',
@@ -49,19 +49,14 @@ var styles = {
   },
   error: {
     position: 'fixed',
-    left: 0,
-    bottom: 2,
-    height: 'auto',
-    overflow: 'auto',
-    backgroundColor: 'rgb(244, 164, 165)',
+    left: '2vw',
+    bottom: '2vw',
+    backgroundColor: 'pink',
     color: 'red',
-    fontSize: '1.1em',
-    borderRadius: '3px',
-    borderTop: '1px dotted red',
-    borderRight: '1px dotted red',
-    borderBottom: '1px dotted red',
-    zIndex: 3,
-    },
+    padding: '0.3rem',
+    width: '90vw',
+    zIndex: '300',
+  },
   cont: {
     height: '100vh',
     display: 'flex'
@@ -84,7 +79,7 @@ var styles = {
     padding: '0.2rem',
     backgroundColor: 'rgba(240,240,240,0.8)',
     border: 'none',
-    zIndex: 100,
+    zIndex: '100',
   },
   footer: {
     position: 'fixed',
@@ -94,7 +89,33 @@ var styles = {
     color: 'rgba(55,55,55,0.6)',
     fontFamily: 'Lato',
     fontSize: '0.8rem',
-  }
+  },
+  hidden: {
+    display: 'none',
+  },
+  grav: {
+    borderRadius: '25px',
+    cursor: 'pointer',
+  },
+  gravInput: {
+    resize: 'none',
+    width: '300px',
+    height: '2rem',
+    backgroundColor: '#EEE',
+    border: '0',
+    borderRadius: '2px',
+    color: '#333',
+    fontFamily: 'Source Code Pro',
+    fontSize: '1.1rem',
+    verticalAlign: 'middle',
+  },
+  container: {
+    display: 'flex',
+    position: 'absolute',
+    float: 'right',
+    right: '1rem',
+  },
+
 };
 
 module.exports = styles;
