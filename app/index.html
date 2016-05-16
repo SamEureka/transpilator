@@ -13,64 +13,17 @@
     <script src="https://use.typekit.net/taz0txm.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
 		<style>
-		body {
-		  background-color: #FFF;
-		  font-family: 'Source Code Pro';
-		  color: steelblue;
-		}
-
-		#clipButton{
-		  background-color: #FFF;
-		  border: 1px solid #CCC;
-		  shadow: 0;
-		  border-radius: 3px;
-		  padding: 5px;
-		  position: absolute;
-		  right: 2vw;
-		  top: 80px;
-		  z-index: 1000;
-		  color: #999;
-		}
-
-		#clip {
-		  display: none;
-		}
-
-		.container {
-		  display: flex;
-		}
-
-		.cm-s-default {
-		  width: 50vw;
-		  height: 100vh;
-		  font-family: 'Source Code Pro';
-		  font-size: 1rem;
-		  background-color: rgba(63, 191, 191, 0.2);
-		}
-
-		#grav:hover {
-		  transform: rotate(-360deg);
-		  transition: 2s;
-		}
-
-		#title {
-			font-family: 'Brandon+Grotesque';
-		}
-
+			body { background-color: #CCC; font-family: Lato, 'sans-serif'; min-width: 690px;}
+			input:focus,button:focus,select:focus { outline:none; }
+			a { text-decoration: none; color: rgba(55,55,55,0.6); font-size: 0.8rem; font-family: Lato; }
+			.cm-s-default { width: 50vw; height: 88vh; font-family: 'Source Code Pro'; font-size: 1rem; background-color: #EEE; }
+			#grav:hover { transform: rotate(-360deg); transition: 2s; }
 		</style>
 	</head>
 	<body>
 		<div id="awesome"></div>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.10.0/codemirror.min.js"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.14.2/mode/javascript/javascript.js"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.14.2/mode/jade/jade.js"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.14.2/mode/css/css.js"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.14.2/mode/htmlmixed/htmlmixed.js"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.14.2/mode/xml/xml.js"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.14.2/keymap/sublime.min.js"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/6.0.1/markdown-it.min.js"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.33/browser.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.7.7/babel.min.js"></script>
       <script src="http://cdnjs.cloudflare.com/ajax/libs/coffee-script/1.1.2/coffee-script.min.js"></script>
     	<script src="https://cdnjs.cloudflare.com/ajax/libs/jade/1.11.0/jade.min.js"></script>
 			<script src="index.js"></script>

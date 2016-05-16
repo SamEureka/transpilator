@@ -1,23 +1,15 @@
 import React from 'react';
+
 import styles from './Styles';
 
-var Header = React.createClass({
-  handleSelectChange (e) {
-    this.props.app.setState({
-      transpiler: e.target.value,
-      err: '',
-    });
-  },
-  render: function() {
+export default class Header extends React.Component {
+  render(){
     return (
-      <header style={styles.header}>
-        <i style={styles.red} className="fa fa-code "></i>
-        <i style={styles.blue} className="fa fa-code"></i>
-        <span>TRANSPILATOR</span>
-
-      </header>
+      <div>
+        <div style={styles.title}>
+          <span style={styles.red}>&lt;</span>/<span style={styles.blue}>&gt;</span> TRANSPILATOR
+        </div>
+      </div>
     )
   }
-});
-
-module.exports = Header;
+}

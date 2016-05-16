@@ -1,52 +1,4 @@
 const styles = {
-  text: {
-    position: 'fixed',
-    width: '48.01vw',
-    height: '100vh',
-    fontFamily: 'Source Code Pro',
-    fontSize: '1.1rem',
-    top: '3.5rem',
-    left: 0,
-    paddingTop: '1.6rem',
-    paddingRight: '1vw',
-    paddingLeft: '1vw',
-    backgroundColor: 'rgba(70,130,180,0.1)',
-    color: '#222',
-    resize: 'none',
-    overflow: 'auto',
-    border: 0,
-    zIndex: 1,
-  },
-  pre: {
-    position: 'fixed',
-    backgroundColor: 'rgba(70,230,180,0.2)',
-    width: '48.01vw',
-    height: '100vh',
-    fontFamily: 'Source Code Pro',
-    fontSize: '1.1rem',
-    top: '2.4rem',
-    right: 0,
-    paddingTop: 10,
-    paddingLeft: '1vw',
-    paddingRight: '1vw',
-    paddingTop: '1.4rem',
-    color: '#222',
-    whiteSpace: 'pre-wrap',
-    wordWrap: 'break-word',
-    overflow: 'auto',
-    },
-  header: {
-    backgroundColor: 'rgba(240,240,240,0.5)',
-    position: 'fixed',
-    top: 0,
-    color: '#666',
-    height: '3rem',
-    width: '100vw',
-    fontFamily: 'Brandon+Grotesque',
-    fontSize: '2rem',
-    paddingLeft: '0.5rem',
-    paddingTop: '0.5rem',
-  },
   error: {
     position: 'fixed',
     left: '2vw',
@@ -55,32 +7,26 @@ const styles = {
     color: 'red',
     padding: '0.3rem',
     width: '90vw',
-    zIndex: '300',
-  },
-  cont: {
-    height: '100vh',
-    display: 'flex'
+    zIndex: 200,
   },
   blue: {
     color: 'steelblue'
   },
   red: {
-    color: 'rgba(225, 55, 55,0.5)'
-  },
-  green: {
-    color: 'rgba(50,250,55,0.2)'
+    color: 'rgba(225, 55, 55,0.8)'
   },
   pick: {
     position: 'fixed',
     right: '51vw',
-    top: '4.2rem',
+    top: '5rem',
     fontFamily: 'Lato',
     fontSize: '1.2rem',
     padding: '0.2rem',
-    backgroundColor: 'rgba(240,240,240,0.8)',
-    border: 'none',
-    zIndex: '100',
-  },
+    backgroundColor: '#FFF',
+    border: '1px solid #CCC',
+    zIndex: 100,
+    color: '#999',
+},
   footer: {
     position: 'fixed',
     bottom: '0.8rem',
@@ -89,11 +35,12 @@ const styles = {
     color: 'rgba(55,55,55,0.6)',
     fontFamily: 'Lato',
     fontSize: '0.8rem',
+    zIndex: 201,
   },
   hidden: {
     display: 'none',
   },
-  grav: {
+  gravImage: {
     borderRadius: '25px',
     cursor: 'pointer',
   },
@@ -101,21 +48,44 @@ const styles = {
     resize: 'none',
     width: '300px',
     height: '2rem',
-    backgroundColor: '#EEE',
-    border: '0',
+    backgroundColor: '#FFF',
+    border: 0,
     borderRadius: '2px',
     color: '#333',
     fontFamily: 'Source Code Pro',
     fontSize: '1.1rem',
     verticalAlign: 'middle',
+    marginRight: '6px',
+    marginTop: '6px',
   },
-  container: {
+  gravContainer: {
     display: 'flex',
     position: 'absolute',
     float: 'right',
     right: '1rem',
   },
-
+  container: {
+    display: 'flex',
+  },
+  title: {
+    width: '50vw',
+    fontFamily: ['Brandon-Grotesque', 'Lato', 'sans-serif'],
+    fontSize: '2rem',
+    paddingLeft: '2rem',
+    paddingBottom: '0.5rem',
+  },
+  clipButton: {
+    backgroundColor: '#FFF',
+    border: '1px solid #CCC',
+    shadow: 0,
+    borderRadius: '3px',
+    padding: '5px',
+    position: 'absolute',
+    right: '1rem',
+    top: '5rem',
+    zIndex: 1000,
+    color: '#999',
+  },
 };
 
 module.exports = styles;
