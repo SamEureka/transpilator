@@ -37,6 +37,29 @@ const styles = {
     fontSize: '0.8rem',
     zIndex: 201,
   },
+  aboutPop:{
+    position: 'fixed',
+    width: '70vw',
+    height: '70vh',
+    borderRadius: '10px',
+    boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.37)',
+    backgroundColor: '#FFF',
+    padding: '2rem',
+    top: '15vh',
+    left: '15vw',
+    zIndex: 1337,
+  },
+  about: {
+    position: 'fixed',
+    bottom: '0.8rem',
+    left: '0.8rem',
+    textDecoration: 'none',
+    color: 'rgba(55,55,55,0.6)',
+    fontFamily: 'Lato',
+    fontSize: '0.8rem',
+    zIndex: 201,
+    cursor: 'pointer',
+  },
   hidden: {
     display: 'none',
   },
@@ -86,6 +109,13 @@ const styles = {
     zIndex: 1000,
     color: '#999',
   },
+  backCover: {
+    position: 'fixed',
+    height: '100vh',
+    width: '100vw',
+    backgroundColor: 'rgba(180,180,180,0.2)',
+    zIndex: 1336,
+  }
 };
 
 module.exports = styles;

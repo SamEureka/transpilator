@@ -15,6 +15,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import config from './components/Config';
 import styles from './components/Styles';
+import About from './components/About';
 import Pick from './components/Pick';
 import Err from './components/Err';
 
@@ -31,6 +32,7 @@ export default class App extends React.Component {
       enterId: false,
       err: '',
       displayErr: false,
+      about: false,
     }
   }
 
@@ -64,6 +66,13 @@ export default class App extends React.Component {
     }
   }
 
+  getAbout(){
+    if(!this.state.about){
+      this.setState({about: true});
+    } else {
+      this.setState({about: false});
+    }
+  }
 
   checkLocalStorage() {
     const email = localStorage.getItem('email');
@@ -241,6 +250,9 @@ export default class App extends React.Component {
           err={this.state.err}
           displayErr={this.state.displayErr} />
         <Footer />
+        <About
+          getAbout={this.getAbout.bind(this)}
+          about={this.state.about}/>
     </div>)
   }
 }

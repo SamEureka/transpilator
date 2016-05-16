@@ -1,10 +1,9 @@
 {
   "name": "transpilator",
   "version": "1.0.0",
-  "description": "A live code transpiler",
+  "description": "A live source-to-source transpiler",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --progress --colors",
     "dev": "webpack-dev-server --hot --inline --progress --colors",
     "start": "npm run dev"
