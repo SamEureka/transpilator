@@ -34256,18 +34256,20 @@
 	  },
 	  aboutPop: {
 	    position: 'fixed',
-	    width: '740px',
-	    height: '640px',
+	    width: '70vw',
+	    maxWidth: '760px',
+	    maxHeight: '90vh',
 	    fontSize: '1rem',
 	    lineHeight: '1.8rem',
 	    borderRadius: '10px',
 	    boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.37)',
 	    backgroundColor: '#EEE',
 	    padding: '1.5rem',
-	    bottom: '10vh',
-	    left: '5vw',
+	    bottom: '2vh',
+	    left: '2vw',
 	    zIndex: 1337,
-	    transition: '1s'
+	    transition: '1s',
+	    overflow: 'scroll'
 	  },
 	  about: {
 	    position: 'fixed',
@@ -34285,11 +34287,17 @@
 	  },
 	  aboutLink: {
 	    fontSize: '1rem',
-	    color: 'steelblue'
+	    color: 'steelblue',
+	    fontFamily: 'Lato'
 	  },
 	  aboutOLink: {
 	    fontSize: '1rem',
 	    color: 'orangered'
+	  },
+	  aboutSpace: {
+	    display: 'flex',
+	    flexDirection: 'column',
+	    paddingLeft: '20px'
 	  },
 	  close: {
 	    position: 'relative',
@@ -34364,7 +34372,7 @@
 	    width: '100vw',
 	    backgroundColor: 'rgba(80,80,80,0.0)',
 	    zIndex: -336,
-	    transition: '3s'
+	    transition: '1s'
 	  },
 	  code: {
 	    backgroundColor: '#FFF',
@@ -34377,8 +34385,8 @@
 	  },
 	  offScreen: {
 	    position: 'fixed',
-	    width: '45rem',
-	    height: '41rem',
+	    width: '70vw',
+	    //height: '90vh',
 	    fontSize: '1rem',
 	    lineHeight: '1.8rem',
 	    borderRadius: '10px',
@@ -34741,6 +34749,7 @@
 	            _react2.default.createElement(
 	              'a',
 	              { style: _Styles2.default.aboutLink, href: 'http://translate.google.com' },
+	              ' ',
 	              'Google Translate'
 	            ),
 	            '... but for code parsers/transpilers! No setup, just select your parser and start typing!'
@@ -34756,27 +34765,116 @@
 	            _react2.default.createElement(
 	              'li',
 	              null,
-	              'React... beacuse awesome'
+	              _react2.default.createElement(
+	                'a',
+	                { style: _Styles2.default.aboutLink, href: 'https://facebook.github.io/react/index.html' },
+	                'React'
+	              ),
+	              '... beacuse awesome'
 	            ),
 	            _react2.default.createElement(
 	              'li',
 	              null,
-	              'CodeMirror... because line numbering had too many edge cases'
+	              _react2.default.createElement(
+	                'a',
+	                { style: _Styles2.default.aboutLink, href: 'https://codemirror.net/index.html' },
+	                'CodeMirror'
+	              ),
+	              '... because line numbering had too many edge cases'
 	            ),
 	            _react2.default.createElement(
 	              'li',
 	              null,
-	              'Webpack... because it\'s more confusing than Grunt but makes more sense'
+	              _react2.default.createElement(
+	                'a',
+	                { style: _Styles2.default.aboutLink, href: 'http://webpack.github.io/docs/' },
+	                'Webpack'
+	              ),
+	              '... because it\'s more confusing than ',
+	              _react2.default.createElement(
+	                'a',
+	                { style: _Styles2.default.aboutLink, href: 'http://gruntjs.com/' },
+	                'Grunt'
+	              ),
+	              ' but makes more sense'
 	            ),
 	            _react2.default.createElement(
 	              'li',
 	              null,
-	              'Trello... boards & cards!'
+	              _react2.default.createElement(
+	                'a',
+	                { style: _Styles2.default.aboutLink, href: 'https://trello.com/' },
+	                'Trello'
+	              ),
+	              '... boards & cards are amazing for staying on track, keeping yourself organized!'
 	            ),
 	            _react2.default.createElement(
 	              'li',
 	              null,
-	              'Clipboard.js, MD5.js, Babel, Markdown-it, Font Awesome... made it all so easy!'
+	              _react2.default.createElement(
+	                'a',
+	                { style: _Styles2.default.aboutLink, href: 'https://clipboardjs.com/' },
+	                'Clipboard.js'
+	              ),
+	              ', ',
+	              _react2.default.createElement(
+	                'a',
+	                { style: _Styles2.default.aboutLink, href: 'https://blueimp.github.io/JavaScript-MD5/' },
+	                ' MD5.js'
+	              ),
+	              ', ',
+	              _react2.default.createElement(
+	                'a',
+	                { style: _Styles2.default.aboutLink, href: 'https://babeljs.io/' },
+	                ' Babel'
+	              ),
+	              ', ',
+	              _react2.default.createElement(
+	                'a',
+	                { style: _Styles2.default.aboutLink, href: 'https://markdown-it.github.io/' },
+	                ' Markdown-it'
+	              ),
+	              ', and',
+	              _react2.default.createElement(
+	                'a',
+	                { style: _Styles2.default.aboutLink, href: 'http://fontawesome.io/' },
+	                ' Font Awesome'
+	              ),
+	              '... made it all so easy!'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'h2',
+	            null,
+	            'Help?!'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'If you would like to help make TRANSPILATOR even more awesome, just want to see how I did something, or would like to use any of my crap code in your own project... check out:'
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'container' },
+	            _react2.default.createElement(
+	              'div',
+	              { style: _Styles2.default.aboutSpace },
+	              _react2.default.createElement(
+	                'a',
+	                { style: _Styles2.default.aboutLink, href: 'https://trello.com/b/StKxc7fM/transpilator-io' },
+	                _react2.default.createElement('span', { className: 'fa fa-trello fa-2x' }),
+	                ' Trello Board'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { style: _Styles2.default.aboutSpace },
+	              _react2.default.createElement(
+	                'a',
+	                { style: _Styles2.default.aboutLink, href: 'https://github.com/SamEureka/transpilator' },
+	                _react2.default.createElement('span', { className: 'fa fa-github fa-2x' }),
+	                ' GitHub Repo'
+	              )
 	            )
 	          ),
 	          _react2.default.createElement(
@@ -34784,7 +34882,9 @@
 	            null,
 	            'Thanks!'
 	          ),
-	          'My mentor ',
+	          'A ton of gratitude and ',
+	          _react2.default.createElement('span', { className: 'fa fa-heart-o' }),
+	          '\'s to my mentor ',
 	          _react2.default.createElement(
 	            'a',
 	            { style: _Styles2.default.aboutLink, href: 'http://mattborn.com' },
