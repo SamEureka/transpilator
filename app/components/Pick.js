@@ -10,7 +10,6 @@ export default class Pick extends React.Component {
           <option value="markdown">Markdown</option>
           <option value="jsx">React/JSX</option>
           <option value="coffee">CoffeeScript</option>
-          <option value="live">LiveScript</option>
         </select>
     );
   }

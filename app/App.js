@@ -46,8 +46,6 @@ export default class App extends React.Component {
         return config.jsxConfig;
       case "coffee":
         return config.coffeeConfig;
-      case "live":
-        return config.liveConfig;
     }
   }
 
@@ -60,8 +58,6 @@ export default class App extends React.Component {
       case "jsx":
         return config.htmlConfig;
       case "coffee":
-        return config.htmlConfig;
-      case "live":
         return config.htmlConfig;
     }
   }
@@ -164,17 +160,6 @@ export default class App extends React.Component {
     });
   }
 
-  renderLiveScript(e){
-    const code = LiveScript.compile(e, {
-      bare: true
-    });
-    this.setState({
-      'text': e,
-      'rendered': code,
-      'displayErr': false
-    });
-  }
-
   update(e) {
     try {
       switch (this.state.selected){
@@ -186,8 +171,6 @@ export default class App extends React.Component {
           return this.renderJSX(e);
         case "coffee":
           return this.renderCoffeeScript(e);
-        case "live":
-          return this.renderLiveScript(e);
       };
     }
     catch(err) {
