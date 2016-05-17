@@ -39,18 +39,20 @@ const styles = {
   },
   aboutPop:{
     position: 'fixed',
-    width: '740px',
-    height: '640px',
+    width: '70vw',
+    maxWidth: '760px',
+    maxHeight: '90vh',
     fontSize: '1rem',
     lineHeight: '1.8rem',
     borderRadius: '10px',
     boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.37)',
     backgroundColor: '#EEE',
     padding: '1.5rem',
-    bottom: '10vh',
-    left: '5vw',
+    bottom: '2vh',
+    left: '2vw',
     zIndex: 1337,
     transition: '1s',
+    overflow: 'scroll'
   },
   about: {
     position: 'fixed',
@@ -69,10 +71,16 @@ const styles = {
   aboutLink: {
     fontSize: '1rem',
     color: 'steelblue',
+    fontFamily: 'Lato',
   },
   aboutOLink: {
     fontSize: '1rem',
     color: 'orangered',
+  },
+  aboutSpace: {
+    display: 'flex',
+    flexDirection: 'column',
+    paddingLeft: '20px',
   },
   close: {
     position: 'relative',
@@ -147,7 +155,7 @@ const styles = {
     width: '100vw',
     backgroundColor: 'rgba(80,80,80,0.0)',
     zIndex: -336,
-    transition: '3s',
+    transition: '1s',
   },
   code: {
     backgroundColor: '#FFF',
@@ -160,8 +168,8 @@ const styles = {
   },
   offScreen: {
     position: 'fixed',
-    width: '45rem',
-    height: '41rem',
+    width: '70vw',
+    //height: '90vh',
     fontSize: '1rem',
     lineHeight: '1.8rem',
     borderRadius: '10px',

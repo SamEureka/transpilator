@@ -30,19 +30,29 @@ export default class About extends React.Component {
               </p>
               <p>
                 I wanted an app that was like
-                <a style={styles.aboutLink} href="http://translate.google.com">Google Translate</a>...
+                <a style={styles.aboutLink} href="http://translate.google.com">{' '}Google Translate</a>...
                 but for code parsers/transpilers! No setup, just select your parser and start typing!
               </p>
             <h2>How?</h2>
               <ul>
-                <li>React... beacuse awesome</li>
-                <li>CodeMirror... because line numbering had too many edge cases</li>
-                <li>Webpack... because it's more confusing than Grunt but makes more sense</li>
-                <li>Trello... boards & cards!</li>
-                <li>Clipboard.js, MD5.js, Babel, Markdown-it, Font Awesome... made it all so easy!</li>
+                <li><a style={styles.aboutLink} href="https://facebook.github.io/react/index.html">React</a>... beacuse awesome</li>
+                <li><a style={styles.aboutLink} href="https://codemirror.net/index.html">CodeMirror</a>... because line numbering had too many edge cases</li>
+                <li><a style={styles.aboutLink} href="http://webpack.github.io/docs/">Webpack</a>... because it's more confusing than <a style={styles.aboutLink} href="http://gruntjs.com/">Grunt</a> but makes more sense</li>
+                <li><a style={styles.aboutLink} href="https://trello.com/">Trello</a>... boards & cards are amazing for staying on track, keeping yourself organized!</li>
+                <li><a style={styles.aboutLink} href="https://clipboardjs.com/">Clipboard.js</a>
+                  , <a style={styles.aboutLink} href="https://blueimp.github.io/JavaScript-MD5/"> MD5.js</a>
+                  , <a style={styles.aboutLink} href="https://babeljs.io/"> Babel</a>
+                  , <a style={styles.aboutLink} href="https://markdown-it.github.io/"> Markdown-it</a>
+                , and<a style={styles.aboutLink} href="http://fontawesome.io/"> Font Awesome</a>... made it all so easy!</li>
               </ul>
+            <h2>Help?!</h2>
+              <p>If you would like to help make TRANSPILATOR even more awesome, just want to see how I did something, or would like to use any of my crap code in your own project... check out:</p>
+               <div className="container">
+                 <div style={styles.aboutSpace}><a style={styles.aboutLink} href="https://trello.com/b/StKxc7fM/transpilator-io"><span className="fa fa-trello fa-2x"/> Trello Board</a></div>
+                 <div style={styles.aboutSpace}><a style={styles.aboutLink} href="https://github.com/SamEureka/transpilator"><span className="fa fa-github fa-2x"/> GitHub Repo</a></div>
+              </div>
             <h2>Thanks!</h2>
-              My mentor <a style={styles.aboutLink} href="http://mattborn.com"> Matt Born </a> & my advisor <a style={styles.aboutLink} href="http://twitter.com/prachiniksingh"> Prachi Singh</a> @ <a style={styles.aboutOLink} href="http://bloc.io/">Bloc.io</a>
+              A ton of gratitude and <span className="fa fa-heart-o"/>'s to my mentor <a style={styles.aboutLink} href="http://mattborn.com"> Matt Born </a> & my advisor <a style={styles.aboutLink} href="http://twitter.com/prachiniksingh"> Prachi Singh</a> @ <a style={styles.aboutOLink} href="http://bloc.io/">Bloc.io</a>
 
             <div><h3 style={styles.close}>//Sam</h3></div>
         </div>
