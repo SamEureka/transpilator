@@ -12,7 +12,6 @@ const styles = {
   },
   grayCog:{
     color: '#666',
-    //fontSize: '2rem',
   },
   blueBrace: {
     fontFamily: 'Source Code Pro',
@@ -73,7 +72,6 @@ const styles = {
   },
   aboutGrayCog:{
     color: '#666',
-    //fontSize: '2rem',
   },
   aboutPop:{
     position: 'fixed',
@@ -81,7 +79,6 @@ const styles = {
     maxWidth: '760px',
     maxHeight: '90vh',
     fontSize: '1rem',
-    //lineHeight: '1.8rem',
     borderRadius: '10px',
     boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.37)',
     backgroundColor: '#FFF',
@@ -133,7 +130,6 @@ const styles = {
     transition: '1s',
   },
   gravImage: {
-    //borderRadius: '25px',
     cursor: 'pointer',
     zIndex: 4000,
   },
@@ -149,7 +145,6 @@ const styles = {
     fontSize: '1.1rem',
     verticalAlign: 'middle',
     marginRight: '6px',
-    //marginTop: '6px',
   },
   gravContainer: {
     display: 'flex',
@@ -231,7 +226,6 @@ const styles = {
   offScreen: {
     position: 'fixed',
     width: '70vw',
-    //height: '90vh',
     fontSize: '1rem',
     lineHeight: '1.8rem',
     borderRadius: '10px',

@@ -5,7 +5,7 @@ import styles from './Styles';
 export default class Gravatar extends React.Component {
 
   getGravImg() {
-    return `http://www.gravatar.com/avatar/${this.props.grav}?s=50`;
+    return `http://www.gravatar.com/avatar/${this.props.grav}?s=40`;
   }
 
   render() {
