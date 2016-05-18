@@ -50522,6 +50522,13 @@
 
 	'use strict';
 
+	// Picks random color from an array
+	// const getColor = () => {
+	//   const n = Math.floor(Math.random()* (5-0+1))+0;
+	//   const c =['#C1F0F0','#BADA55', '#EEEEEE', '#B6A5E8', '#CCCCCC', '#ffcce6'];
+	//   return c[n];
+	// };
+
 	var styles = {
 	  error: {
 	    position: 'fixed',
@@ -50705,6 +50712,8 @@
 	    left: 0,
 	    width: '100vw',
 	    height: '3.5rem',
+	    // Random BG color, kinda silly
+	    // backgroundColor: getColor(),
 	    backgroundColor: '#EEE',
 	    borderBottom: '1px solid #CCC'
 	  },
