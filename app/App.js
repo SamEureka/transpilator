@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import md5 from 'md5';
-import CodeMirror from 'codemirror';
+// import CodeMirror from 'codemirror';
+import Codemirror from 'react-code-mirror';
 import 'codemirror/mode/javascript/javascript';
 import 'codemirror/mode/xml/xml';
 import 'codemirror/mode/jade/jade';
@@ -214,13 +215,13 @@ export default class App extends React.Component {
     window.addEventListener('resize', this.viewportCheck.bind(this));
     const btn = document.getElementById('clipButton');
     const clipboard = new Clip(btn);
-    editorOut = CodeMirror.fromTextArea(this.refs.editorOut, this.getOutputConfig());
-    editorIn = CodeMirror.fromTextArea(this.refs.editorIn, this.getInputConfig());
-    editorIn.on("change", function() {
-      const temp = editorIn.doc.getValue();
-      this.update(temp);
-      editorOut.doc.setValue(this.state.rendered);
-    }.bind(this));
+    // editorOut = CodeMirror.fromTextArea(this.refs.editorOut, this.getOutputConfig());
+    // editorIn = CodeMirror.fromTextArea(this.refs.editorIn, this.getInputConfig());
+    // editorIn.on("change", function() {
+    //  const temp = editorIn.doc.getValue();
+    //  this.update(temp);
+    //  editorOut.doc.setValue(this.state.rendered);
+    // }.bind(this));
   }
 
   componentWillUnmount(){
@@ -240,10 +241,11 @@ export default class App extends React.Component {
         <Pick handleSelect={this.handleSelectChange.bind(this)}/>
 
         <div style={styles.editorContainer}>
-          <textarea
+          <Codemirror />
+          {/*<textarea
             className='codemirror'
             ref='editorIn'
-            id='input'></textarea>
+            id='input'></textarea>*/}
           <button
             id="clipButton"
             style={styles.clipButton}
@@ -251,11 +253,11 @@ export default class App extends React.Component {
             alt="Copy to clipboard">
               <span className="cl icon icon-clipboard"/>
           </button>
-          <textarea
+          {/*<textarea
             className='codemirror'
             ref='editorOut'
             id='output'>
-          </textarea>
+          </textarea>*/}
         </div>
         <Err
           err={this.state.err}
