@@ -1,3 +1,4 @@
 #!/bin/sh
 git subtree push --prefix dist origin gh-pages
 # gist.github.com/dominicmartineau/6bc21eec008854ebdeb8
+# transpilator.io

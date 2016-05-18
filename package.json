@@ -15,7 +15,13 @@
   "keywords": [
     "compiler",
     "translator",
-    "react"
+    "react",
+    "md5",
+    "gravatar",
+    "codemirror",
+    "jade",
+    "coffeescript",
+    "markdown"
   ],
   "author": "Sam Dennon & Matt Born",
   "license": "MIT",

@@ -20,6 +20,4 @@ export default class Header extends React.Component {
   }
 }
 
-
-// &lt;
-// &gt;
+// transpilator.io

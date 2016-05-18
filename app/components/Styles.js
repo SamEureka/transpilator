@@ -255,3 +255,5 @@ const styles = {
 };
 
 module.exports = styles;
+
+// transpilator.io

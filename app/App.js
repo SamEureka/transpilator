@@ -9,7 +9,7 @@ import 'codemirror/mode/css/css';
 import 'codemirror/mode/htmlmixed/htmlmixed';
 import 'codemirror/keymap/sublime';
 import Clip from 'clipboard';
-import _ from 'lodash';
+// import _ from 'lodash';
 
 import Gravatar from './components/Gravatar';
 import Header from './components/Header';
@@ -267,12 +267,3 @@ export default class App extends React.Component {
     </div>)
   }
 }
-
-
-// <Gravatar
-//   handleInput={this.handleGravInput.bind(this)}
-//   handleSubmit={this.handleGravSubmit.bind(this)}
-//   handleClick={this.handleGravClick.bind(this)}
-//   enterId={this.state.enterId}
-//   grav={this.state.grav}
-//   />

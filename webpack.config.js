@@ -1,3 +1,4 @@
+// transpilator.io
 var webpack = require('webpack');
 
 module.exports = {

@@ -14,3 +14,5 @@ export default class Pick extends React.Component {
     );
   }
 }
+
+// transpilator.io
