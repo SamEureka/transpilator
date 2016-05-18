@@ -171,6 +171,7 @@ const styles = {
     left: 0,
     bottom: '2rem',
     width: '100vw',
+    height: '90vh',
   },
   container: {
     display: 'flex',

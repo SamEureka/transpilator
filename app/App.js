@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import md5 from 'md5';
-import CodeMirror from 'codemirror';
+// import CodeMirror from 'codemirror';
+import Codemirror from 'react-codemirror';
 import 'codemirror/mode/javascript/javascript';
 import 'codemirror/mode/xml/xml';
 import 'codemirror/mode/jade/jade';
@@ -20,15 +21,19 @@ import About from './components/About';
 import Pick from './components/Pick';
 import Err from './components/Err';
 
-let editorOut = {};
-let editorIn = {};
+const defaults = {
+  markdown: '# Heading\n\nSome **bold** and _italic_ text\nBy [Sam Dennon](https://github.com/SamEureka)',
+  jade: 'doctype html\nhtml(lang="en")\n\thead\n\t\ttitle pageTitle'
+};
+
+
 
 
 export default class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      text: '',
+      text: defaults.jade,
       rendered: '',
       selected: 'jade',
       email: '',
@@ -199,6 +204,10 @@ export default class App extends React.Component {
     }
   }
 
+  interact(boom){
+    boom.setValue('doctype');
+  }
+
   viewportCheck(){
     const w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
     const h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
@@ -214,13 +223,7 @@ export default class App extends React.Component {
     window.addEventListener('resize', this.viewportCheck.bind(this));
     const btn = document.getElementById('clipButton');
     const clipboard = new Clip(btn);
-    editorOut = CodeMirror.fromTextArea(this.refs.editorOut, this.getOutputConfig());
-    editorIn = CodeMirror.fromTextArea(this.refs.editorIn, this.getInputConfig());
-    editorIn.on("change", function() {
-      const temp = editorIn.doc.getValue();
-      this.update(temp);
-      editorOut.doc.setValue(this.state.rendered);
-    }.bind(this));
+    this.update(this.state.text);
   }
 
   componentWillUnmount(){
@@ -230,49 +233,49 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-
         <Header
           handleInput={this.handleGravInput.bind(this)}
           handleSubmit={this.handleGravSubmit.bind(this)}
           handleClick={this.handleGravClick.bind(this)}
           enterId={this.state.enterId}
           grav={this.state.grav}/>
-        <Pick handleSelect={this.handleSelectChange.bind(this)}/>
+
+      <Pick handleSelect={this.handleSelectChange.bind(this)}/>
 
         <div style={styles.editorContainer}>
-          <textarea
-            className='codemirror'
-            ref='editorIn'
-            id='input'></textarea>
-          <button
+
+          <Codemirror
+            ref="editorIn"
+            value={this.state.text}
+            onChange={this.update.bind(this)}
+            options={config.jadeConfig}
+            interact={this.interact}/>
+
+          <Codemirror
+            ref="editorOut"
+            value={this.state.rendered}
+            options={config.htmlConfig}/>
+
+        <button
             id="clipButton"
             style={styles.clipButton}
             data-clipboard-text={this.state.rendered}
             alt="Copy to clipboard">
               <span className="cl icon icon-clipboard"/>
           </button>
-          <textarea
-            className='codemirror'
-            ref='editorOut'
-            id='output'>
-          </textarea>
         </div>
+
         <Err
           err={this.state.err}
           displayErr={this.state.displayErr} />
+
         <Footer />
+
         <About
           getAbout={this.getAbout.bind(this)}
           about={this.state.about}/>
-    </div>)
+
+      </div>
+    )
   }
 }
-
-
-// <Gravatar
-//   handleInput={this.handleGravInput.bind(this)}
-//   handleSubmit={this.handleGravSubmit.bind(this)}
-//   handleClick={this.handleGravClick.bind(this)}
-//   enterId={this.state.enterId}
-//   grav={this.state.grav}
-//   />

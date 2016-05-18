@@ -39,9 +39,10 @@ const config = {
     theme: 'default',
     styleActiveLine: true,
     matchBrackets: true,
+    autoClearEmptyLines: false,
+    
     mode: {
       name: "jade",
-      alignCDATA: true,
     },
   },
   markdownConfig: {
