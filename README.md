@@ -4,7 +4,7 @@
 
 Transpilator is a fast and easy way to transpile/parse snippets of source code. No setup or configuration required!
 
-[![screenshot](https://cloud.githubusercontent.com/assets/4239748/15307299/a61eb3f8-1b9f-11e6-995c-ae1830fd7647.png)](http://transpilator.io)
+[![screenshot](https://cloud.githubusercontent.com/assets/4239748/15359808/0adeacc8-1cd9-11e6-8a19-684f3b564e2d.png)](http://transpilator.io)
 
 Currently supported parsers:
 
