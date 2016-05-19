@@ -15,14 +15,14 @@ import Gravatar from './components/Gravatar';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import config from './components/Config';
-import styles from './components/Styles';
+import style from './components/Styles';
+import styleM from './components/StylesM';
 import About from './components/About';
 import Pick from './components/Pick';
 import Err from './components/Err';
 
 let editorOut = {};
 let editorIn = {};
-
 
 export default class App extends React.Component {
   constructor() {
@@ -40,6 +40,7 @@ export default class App extends React.Component {
       h:'',
       w:'',
       clipped: false,
+      styles: style,
     }
   }
 
@@ -203,6 +204,9 @@ export default class App extends React.Component {
     const w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
     const h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
     this.setState({h,w});
+      w < 760
+        ? this.setState({ styles: styleM })
+        : this.setState({ styles: style });
   }
 
   componentWillMount(){
@@ -236,17 +240,20 @@ export default class App extends React.Component {
           handleSubmit={this.handleGravSubmit.bind(this)}
           handleClick={this.handleGravClick.bind(this)}
           enterId={this.state.enterId}
-          grav={this.state.grav}/>
-        <Pick handleSelect={this.handleSelectChange.bind(this)}/>
+          grav={this.state.grav}
+          styles={this.state.styles}/>
+        <Pick
+          handleSelect={this.handleSelectChange.bind(this)}
+          styles={this.state.styles}/>
 
-        <div style={styles.editorContainer}>
+        <div style={this.state.styles.editorContainer}>
           <textarea
             className='codemirror'
             ref='editorIn'
             id='input'></textarea>
           <button
             id="clipButton"
-            style={styles.clipButton}
+            style={this.state.styles.clipButton}
             data-clipboard-text={this.state.rendered}
             alt="Copy to clipboard">
               <span className="cl icon icon-clipboard"/>
@@ -259,11 +266,13 @@ export default class App extends React.Component {
         </div>
         <Err
           err={this.state.err}
-          displayErr={this.state.displayErr} />
-        <Footer />
+          displayErr={this.state.displayErr}
+          styles={this.state.styles} />
+        <Footer styles={this.state.styles}/>
         <About
           getAbout={this.getAbout.bind(this)}
-          about={this.state.about}/>
+          about={this.state.about}
+          styles={this.state.styles}/>
     </div>)
   }
 }

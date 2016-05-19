@@ -4,6 +4,7 @@
 //   const c =['#C1F0F0','#BADA55', '#EEEEEE', '#B6A5E8', '#CCCCCC', '#ffcce6'];
 //   return c[n];
 // };
+
 const styles = {
   error: {
     position: 'fixed',
@@ -18,16 +19,16 @@ const styles = {
   },
   grayCog:{
     color: '#666',
-    //fontSize: '2rem',
+    fontSize: '1.5rem',
   },
   blueBrace: {
     fontFamily: 'Source Code Pro',
-    fontSize: '2.5rem',
+    fontSize: '1.5rem',
     color: 'steelblue',
   },
   redBrace: {
     fontFamily: 'Source Code Pro',
-    fontSize: '2.5rem',
+    fontSize: '1.5rem',
     color: 'rgba(225, 55, 55,0.8)'
   },
   aboutBlueBrace: {
@@ -42,10 +43,10 @@ const styles = {
   },
   pick: {
     position: 'fixed',
-    right: '51vw',
-    top: '4rem',
+    right: '45vw',
+    top: '3.1rem',
     fontFamily: 'Lato',
-    fontSize: '1.2rem',
+    fontSize: '0.8rem',
     padding: '0.2rem',
     backgroundColor: '#FFF',
     borderRadius: 0,
@@ -55,25 +56,26 @@ const styles = {
 },
   pullLeft: {
     float: 'left',
-    paddingLeft: '1rem',
+    paddingLeft: '0.5rem',
   },
   pullRight: {
     float: 'right',
-    paddingRight: '1rem',
+    paddingRight: '0.5rem',
   },
   footer: {
     width: '100vw',
-    height: '1.5rem',
+    minWidth: '320px',
+    height: '1.1rem',
     borderTop: '1px solid #CCC',
     position: 'fixed',
     bottom: 0,
     left: 0,
     textDecoration: 'none',
     backgroundColor: '#333',
-    paddingTop: '0.5rem',
+    paddingTop: '0.2rem',
     color: '#EEE',
     fontFamily: 'Lato',
-    fontSize: '1rem',
+    fontSize: '0.6rem',
     verticalAlign: 'middle',
     zIndex: 201,
   },
@@ -83,10 +85,10 @@ const styles = {
   },
   aboutPop:{
     position: 'fixed',
-    width: '760px',
-    maxWidth: '760px',
+    width: '90vw',
+    maxWidth: '300px',
     height: '90vh',
-    fontSize: '1rem',
+    fontSize: '0.8rem',
     borderRadius: '10px',
     boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.37)',
     backgroundColor: '#FFF',
@@ -100,10 +102,10 @@ const styles = {
   },
   offScreen: {
     position: 'fixed',
-    width: '750px',
-    maxWidth: '760px',
+    width: '90vw',
+    maxWidth: '300px',
     height: '90vh',
-    fontSize: '1rem',
+    fontSize: '0.8rem',
     borderRadius: '10px',
     boxShadow: '0 1px 6px 0 rgba(0, 0, 0, 0.37)',
     backgroundColor: '#FFF',
@@ -116,14 +118,14 @@ const styles = {
   },
   about: {
     position: 'fixed',
-    height: '1.5rem',
+    height: '1.1rem',
     bottom: 0,
     left: 0,
     textDecoration: 'none',
-    paddingTop: '0.5rem',
+    paddingTop: '1rem',
     color: '#EEE',
     fontFamily: 'Lato',
-    fontSize: '1rem',
+    fontSize: '0.8rem',
     zIndex: 201,
     cursor: 'pointer',
   },
@@ -155,33 +157,19 @@ const styles = {
     transition: '1s',
   },
   gravImage: {
-    //borderRadius: '25px',
-    cursor: 'pointer',
-    zIndex: 4000,
+    display: 'none',
   },
   gravInput: {
-    resize: 'none',
-    width: '15rem',
-    height: '2rem',
-    backgroundColor: '#FFF',
-    border: '1px solid #CCC',
-    borderRadius: '2px',
-    color: '#333',
-    fontFamily: 'Source Code Pro',
-    fontSize: '1.1rem',
-    verticalAlign: 'middle',
-    marginRight: '6px',
+    display: 'none',
   },
   gravContainer: {
-    display: 'flex',
-    position: 'fixed',
-    top: '1vh',
-    right: '1rem',
+    display: 'none',
   },
   editorContainer: {
     display: 'flex',
     position: 'fixed',
-    top: '3.5rem',
+    fontSize: '0.8rem',
+    top: '5rem',
     left: 0,
     bottom: '2rem',
     width: '100%',
@@ -190,10 +178,9 @@ const styles = {
     display: 'flex',
   },
   title: {
-    width: '50vw',
     fontFamily: ['Brandon-Grotesque', 'Lato', 'sans-serif'],
-    fontSize: '2.2rem',
-    paddingLeft: '1rem',
+    fontSize: '2rem',
+    paddingLeft: '1.5rem',
     cursor: 'default',
   },
   header: {
@@ -201,7 +188,9 @@ const styles = {
     top: 0,
     left: 0,
     width: '100vw',
-    height: '3.5rem',
+    height: '2.9rem',
+    marginRight: 'auto',
+    marginLeft: 'auto',
     // Random BG color, kinda silly
     // backgroundColor: getColor(),
     backgroundColor: '#EEE',
@@ -216,9 +205,9 @@ const styles = {
     paddingRight: '4px',
     position: 'fixed',
     right: '1rem',
-    top: '4rem',
+    top: '3.2rem',
     zIndex: 1000,
-    fontSize: '1.2rem',
+    fontSize: '1rem',
     color: '#888',
   },
   backCover: {
@@ -245,11 +234,9 @@ const styles = {
   code: {
     fontSize: '0.8rem',
     backgroundColor: '#EEE',
-    borderRadius: '5px',
     color: 'red',
     fontFamily: 'Source Code Pro',
     padding: '1px',
-    margin: '2px',
   },
 };
 

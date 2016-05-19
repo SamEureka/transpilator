@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './Styles';
+// import styles from './Styles';
 
 export default class Gravatar extends React.Component {
 
@@ -10,22 +10,22 @@ export default class Gravatar extends React.Component {
 
   render() {
     return (<div>
-      <div style={styles.gravContainer}>
+      <div style={this.props.styles.gravContainer}>
         <form
           onSubmit={this.props.handleSubmit}>
           <input
             id="gravInput"
             type="text"
             style={this.props.enterId
-              ? styles.gravInput
-              : styles.hidden}
+              ? this.props.styles.gravInput
+              : this.props.styles.hidden}
             placeholder="Enter Gravatar Id"
             onChange={this.props.handleInput} />
         </form>
         <div>
           <img
             id="grav"
-            style={styles.gravImage}
+            style={this.props.styles.gravImage}
             onClick={this.props.handleClick}
             src={this.getGravImg()} />
         </div>
