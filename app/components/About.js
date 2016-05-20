@@ -55,7 +55,7 @@ export default class About extends React.Component {
             <h3>Thanks!</h3>
               A ton of gratitude and <span className="icon icon-heart-o"/>'s to my mentor <a style={this.props.styles.aboutLink} href="http://mattborn.com"> Matt Born </a> & my advisor <a style={this.props.styles.aboutLink} href="http://twitter.com/prachiniksingh"> Prachi Singh</a> @ <a style={this.props.styles.aboutOLink} href="http://bloc.io/">Bloc.io</a>
 
-            <div><h4 style={this.props.styles.close}>//Sam</h4></div>
+            <div><h4 style={this.props.styles.close}><a style={this.props.styles.aboutLink} href="http://samdennon.com">//Sam</a></h4></div>
         </div>
 
     </div>
