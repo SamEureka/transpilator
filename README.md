@@ -1,5 +1,4 @@
 ## Transpilator
-[![Dependency Status](https://david-dm.org/SamEureka/transpilator.svg)](https://david-dm.org/SamEureka/transpilator) [![devDependency Status](https://david-dm.org/SamEureka/transpilator/dev-status.svg)](https://david-dm.org/SamEureka/transpilator#info=devDependencies)
 ###### A source-to-source code transpiler/parser
 
 Transpilator is a fast and easy way to transpile/parse snippets of source code. No setup or configuration required!
